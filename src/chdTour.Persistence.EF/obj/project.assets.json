@@ -493,6 +493,16 @@
         "build": {
           "buildTransitive/net6.0/System.Text.Json.targets": {}
         }
+      },
+      "chdTour.DataAccess.Contracts/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.1",
+        "compile": {
+          "bin/placeholder/chdTour.DataAccess.Contracts.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/chdTour.DataAccess.Contracts.dll": {}
+        }
       }
     }
   },
@@ -1131,33 +1141,37 @@
         "system.text.json.nuspec",
         "useSharedDesignerContext.txt"
       ]
+    },
+    "chdTour.DataAccess.Contracts/1.0.0": {
+      "type": "project",
+      "path": "../chdTour.DataAccess.Contracts/chdTour.DataAccess.Contracts.csproj",
+      "msbuildProject": "../chdTour.DataAccess.Contracts/chdTour.DataAccess.Contracts.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net7.0": [
-      "Microsoft.EntityFrameworkCore.Sqlite >= 7.0.12"
+      "Microsoft.EntityFrameworkCore.Sqlite >= 7.0.12",
+      "chdTour.DataAccess.Contracts >= 1.0.0"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\chris\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\decker\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Source\\chdTour\\src\\chdTour.Persistence.EF\\chdTour.Persistence.EF.csproj",
+      "projectUniqueName": "C:\\Source\\CHD\\chdTour\\src\\chdTour.Persistence.EF\\chdTour.Persistence.EF.csproj",
       "projectName": "chdTour.Persistence.EF",
-      "projectPath": "D:\\Source\\chdTour\\src\\chdTour.Persistence.EF\\chdTour.Persistence.EF.csproj",
-      "packagesPath": "C:\\Users\\chris\\.nuget\\packages\\",
-      "outputPath": "D:\\Source\\chdTour\\src\\chdTour.Persistence.EF\\obj\\",
+      "projectPath": "C:\\Source\\CHD\\chdTour\\src\\chdTour.Persistence.EF\\chdTour.Persistence.EF.csproj",
+      "packagesPath": "C:\\Users\\decker\\.nuget\\packages\\",
+      "outputPath": "C:\\Source\\CHD\\chdTour\\src\\chdTour.Persistence.EF\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\chris\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\decker\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -1165,15 +1179,19 @@
         "net7.0"
       ],
       "sources": {
+        "C:\\CHD\\Nuget": {},
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "C:\\Program Files\\dotnet\\library-packs": {},
-        "https://api.nuget.org/v3/index.json": {},
-        "https://dionysys.metalldeutsch.com/feed/nuget": {}
+        "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Source\\CHD\\chdTour\\src\\chdTour.DataAccess.Contracts\\chdTour.DataAccess.Contracts.csproj": {
+              "projectPath": "C:\\Source\\CHD\\chdTour\\src\\chdTour.DataAccess.Contracts\\chdTour.DataAccess.Contracts.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
@@ -1207,7 +1225,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
       }
     }
   }

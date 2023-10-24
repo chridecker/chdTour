@@ -5,17 +5,19 @@ VisualStudioVersion = 17.7.34202.233
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{D334756F-7B28-49D6-A68D-C3CF2F4621F4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "chdTour.Main", "src\chdTour.Main\chdTour.Main.csproj", "{5A90B094-E6A9-4605-A431-22566F82DBCD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "chdTour.Main", "src\chdTour.Main\chdTour.Main.csproj", "{5A90B094-E6A9-4605-A431-22566F82DBCD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "chdTour.DataAccess.Contracts", "src\chdTour.DataAccess.Contracts\chdTour.DataAccess.Contracts.csproj", "{14CB91A7-A0FD-487B-BA59-8A84707B7FF6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "chdTour.DataAccess.Contracts", "src\chdTour.DataAccess.Contracts\chdTour.DataAccess.Contracts.csproj", "{14CB91A7-A0FD-487B-BA59-8A84707B7FF6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "chdTour.Contracts", "src\chdTour.Contracts\chdTour.Contracts.csproj", "{3BCE4F28-EDAC-4C53-891D-DA94E21EEE35}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "chdTour.Contracts", "src\chdTour.Contracts\chdTour.Contracts.csproj", "{3BCE4F28-EDAC-4C53-891D-DA94E21EEE35}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "chdTour.Persistence.EF", "src\chdTour.Persistence.EF\chdTour.Persistence.EF.csproj", "{6447CCA7-4102-4E95-A97E-F0E976CB2A6E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "chdTour.Persistence.EF", "src\chdTour.Persistence.EF\chdTour.Persistence.EF.csproj", "{6447CCA7-4102-4E95-A97E-F0E976CB2A6E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "chdTour.BL", "src\chdTour.BL\chdTour.BL.csproj", "{C8DFE499-9B86-422F-B923-3EF47CE3F758}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "chdTour.BL", "src\chdTour.BL\chdTour.BL.csproj", "{C8DFE499-9B86-422F-B923-3EF47CE3F758}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{9CE0993D-71FF-4CB7-9F34-CB52951D4056}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{84EF894C-60F6-4161-8DCF-53D3116986FD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "chdTour.EF.Test", "test\chdTour.EF.Test\chdTour.EF.Test.csproj", "{146D4F29-BDB2-413D-9AD2-A18E0FE9EFA7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{C8DFE499-9B86-422F-B923-3EF47CE3F758}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C8DFE499-9B86-422F-B923-3EF47CE3F758}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C8DFE499-9B86-422F-B923-3EF47CE3F758}.Release|Any CPU.Build.0 = Release|Any CPU
+		{146D4F29-BDB2-413D-9AD2-A18E0FE9EFA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{146D4F29-BDB2-413D-9AD2-A18E0FE9EFA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{146D4F29-BDB2-413D-9AD2-A18E0FE9EFA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{146D4F29-BDB2-413D-9AD2-A18E0FE9EFA7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -55,6 +61,7 @@ Global
 		{3BCE4F28-EDAC-4C53-891D-DA94E21EEE35} = {D334756F-7B28-49D6-A68D-C3CF2F4621F4}
 		{6447CCA7-4102-4E95-A97E-F0E976CB2A6E} = {D334756F-7B28-49D6-A68D-C3CF2F4621F4}
 		{C8DFE499-9B86-422F-B923-3EF47CE3F758} = {D334756F-7B28-49D6-A68D-C3CF2F4621F4}
+		{146D4F29-BDB2-413D-9AD2-A18E0FE9EFA7} = {84EF894C-60F6-4161-8DCF-53D3116986FD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A449874D-D58E-4DD2-81C9-D365BE9189A8}

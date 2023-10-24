@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "/b7kUSIRGdaDBj1M+X1c9hRtbEHZ1eMug5DhkaUyMUJ14BeYFbm8mnSogRliAlWeAQMrAgWpSUWo/zXFlAPfZg==",
+  "dgSpecHash": "Gy/0/jv5JoRHYzeHdhugzeTZ2b8RM4o8f0Q0ok3Q26QoTj8PVofMkc67U5twffbR8sAqEnauWQfv61rhi4//mw==",
   "success": true,
-  "projectFilePath": "D:\\Source\\chdTour\\src\\chdTour.Contracts\\chdTour.Contracts.csproj",
+  "projectFilePath": "C:\\Source\\CHD\\chdTour\\src\\chdTour.Contracts\\chdTour.Contracts.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

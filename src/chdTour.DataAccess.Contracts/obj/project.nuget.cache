@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "PgxGfiC5qzHpzEL0/JyUiEIVEarpawbSaWx18pqZyvrx1OLSTFIRP1ibzNCNfNDohTyUPbWIXbJ/Q3/SLcqd5g==",
+  "dgSpecHash": "bVaueR9+8t6WiUol5qqwhGi4M+JsQ6Uuvh936krz4REezxi3q7ccTMW0orswxqlrhYOdV2cN+ti6eb1WIxDwKA==",
   "success": true,
-  "projectFilePath": "D:\\Source\\chdTour\\src\\chdTour.DataAccess.Contracts\\chdTour.DataAccess.Contracts.csproj",
+  "projectFilePath": "C:\\Source\\CHD\\chdTour\\src\\chdTour.DataAccess.Contracts\\chdTour.DataAccess.Contracts.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
