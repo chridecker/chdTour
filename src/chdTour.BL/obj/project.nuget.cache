@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "CM16TgiTleOWsDEwXHdsveYQXCPXNNiNkPWT1WUkhjlPgMwUhMMFTDIyoUx8vk5tUDHdfUV7/PJzjGWtn9eTYQ==",
+  "success": true,
+  "projectFilePath": "D:\\Source\\chdTour\\src\\chdTour.BL\\chdTour.BL.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\chris\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\7.0.0\\microsoft.extensions.configuration.abstractions.7.0.0.nupkg.sha512",
+    "C:\\Users\\chris\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\7.0.0\\microsoft.extensions.dependencyinjection.abstractions.7.0.0.nupkg.sha512",
+    "C:\\Users\\chris\\.nuget\\packages\\microsoft.extensions.primitives\\7.0.0\\microsoft.extensions.primitives.7.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
