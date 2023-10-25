@@ -607,6 +607,20 @@
           "bin/placeholder/chdTour.Contracts.dll": {}
         }
       },
+      "chdTour.DataAccess/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "chdTour.DataAccess.Contracts": "1.0.0",
+          "chdTour.Persistence.EF": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/chdTour.DataAccess.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/chdTour.DataAccess.dll": {}
+        }
+      },
       "chdTour.DataAccess.Contracts/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
@@ -1392,6 +1406,11 @@
       "path": "../chdTour.Contracts/chdTour.Contracts.csproj",
       "msbuildProject": "../chdTour.Contracts/chdTour.Contracts.csproj"
     },
+    "chdTour.DataAccess/1.0.0": {
+      "type": "project",
+      "path": "../chdTour.DataAccess/chdTour.DataAccess.csproj",
+      "msbuildProject": "../chdTour.DataAccess/chdTour.DataAccess.csproj"
+    },
     "chdTour.DataAccess.Contracts/1.0.0": {
       "type": "project",
       "path": "../chdTour.DataAccess.Contracts/chdTour.DataAccess.Contracts.csproj",
@@ -1411,6 +1430,7 @@
       "Microsoft.Extensions.Configuration.Abstractions >= 7.0.0",
       "Microsoft.Extensions.DependencyInjection.Abstractions >= 7.0.0",
       "chdTour.Contracts >= 1.0.0",
+      "chdTour.DataAccess >= 1.0.0",
       "chdTour.Persistence.EF >= 1.0.0"
     ]
   },
@@ -1450,6 +1470,9 @@
           "projectReferences": {
             "C:\\Source\\CHD\\chdTour\\src\\chdTour.Contracts\\chdTour.Contracts.csproj": {
               "projectPath": "C:\\Source\\CHD\\chdTour\\src\\chdTour.Contracts\\chdTour.Contracts.csproj"
+            },
+            "C:\\Source\\CHD\\chdTour\\src\\chdTour.DataAccess\\chdTour.DataAccess.csproj": {
+              "projectPath": "C:\\Source\\CHD\\chdTour\\src\\chdTour.DataAccess\\chdTour.DataAccess.csproj"
             },
             "C:\\Source\\CHD\\chdTour\\src\\chdTour.Persistence.EF\\chdTour.Persistence.EF.csproj": {
               "projectPath": "C:\\Source\\CHD\\chdTour\\src\\chdTour.Persistence.EF\\chdTour.Persistence.EF.csproj"

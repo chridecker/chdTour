@@ -1,4 +1,6 @@
 ﻿using chdTour.Contracts.Settings;
+using chdTour.DataAccess.Contracts.Interfaces.Repositories;
+using chdTour.DataAccess.Repositories;
 using chdTour.Persistence.EF;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
@@ -15,20 +17,21 @@ namespace chdTour.BL.Extensions
 {
     public static class DIExtensions
     {
-        public static IServiceCollection AddchdTourBI(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection AddchdTourBL(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddDbContext<chdTourContext>((sp, options) =>
             {
-                options.UseSqlite(sp.GetRequiredService<IOptionsMonitor<DBSettings>>().CurrentValue.ConnectionString);
+                var path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), $"{nameof(chdTourContext)}.db");
+                options.UseSqlite($"Data Source={path}");
             });
-            return services;
-        }
 
-        public static async Task<IApplicationBuilder> EnsureMigrationOfContext<T>(this IApplicationBuilder app) where T : DbContext
-        {
-            var context = app.ApplicationServices.GetService<T>();
-            await context.Database.MigrateAsync();
-            return app;
+            services.AddTransient<IPersonRepository, PersonRepository>();
+            services.AddTransient<ITourRepository, TourRepository>();
+            services.AddTransient<ITourTypeRepository, TourTypeRepository>();
+            services.AddTransient<IGradeRepository, GradeRepository>();
+            services.AddTransient<IGradeScalaRepository, GradeScalaRepository>();
+
+            return services;
         }
     }
 }

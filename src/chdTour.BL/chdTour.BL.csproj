@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\chdTour.Contracts\chdTour.Contracts.csproj" />
+    <ProjectReference Include="..\chdTour.DataAccess\chdTour.DataAccess.csproj" />
     <ProjectReference Include="..\chdTour.Persistence.EF\chdTour.Persistence.EF.csproj" />
   </ItemGroup>
 
