@@ -16,29 +16,26 @@ namespace chdTour.Persistence.EF
         public DbSet<GradeScala> GradeScalas { get; set; }
         public DbSet<TourPartner> TourPartners { get; set; }
 
-        public chdTourContext() : base()
-        {
-
-        }
-
         public chdTourContext(DbContextOptions<chdTourContext> options) : base(options)
         {
         }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-            {
-                optionsBuilder.UseSqlite($"Data Source=chdTour.db");
-            }
-            base.OnConfiguring(optionsBuilder);
-        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Tour>(build =>
+            {
+                build.HasMany(x => x.TourPartners).WithOne(x => x.TourObj).HasForeignKey(x => x.TourId);
+                build.HasOne(x => x.TourType).WithMany(x => x.Tours).HasForeignKey(x => x.TourTypeId);
+            });
+
+            modelBuilder.Entity<TourType>().HasOne(x => x.GradeScala).WithMany().HasForeignKey(x => x.GradeScala);
+            modelBuilder.Entity<GradeScala>().HasMany(x => x.Grades).WithOne(x => x.GradeScala).HasForeignKey(x => x.GradeScalaId);
+            modelBuilder.Entity<Grade>().HasOne(x => x.GradeScala).WithMany(x => x.Grades).HasForeignKey(x => x.GradeScalaId);
+
             modelBuilder.Entity<TourPartner>().HasKey(x => new { x.TourId, x.PartnerId });
-            modelBuilder.Entity<Tour>().HasMany(x => x.TourPartners).WithOne(x => x.TourObj);
-            modelBuilder.Entity<Person>().HasMany(x => x.TourPartners).WithOne(x => x.PersonObj);
+
+            modelBuilder.Entity<Person>().HasMany(x => x.TourPartners).WithOne(x => x.PersonObj).HasForeignKey(x => x.PartnerId);
 
             base.OnModelCreating(modelBuilder);
         }

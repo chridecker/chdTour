@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("chdTour.BL")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+294e44a3b840727dd10e91de62314f77ac95b3e2")]
 [assembly: System.Reflection.AssemblyProductAttribute("chdTour.BL")]
 [assembly: System.Reflection.AssemblyTitleAttribute("chdTour.BL")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

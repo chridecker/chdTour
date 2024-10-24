@@ -1,3 +1,5 @@
 is_global = true
 build_property.RootNamespace = chdTour.DataAccess.Contracts
 build_property.ProjectDir = C:\Source\CHD\chdTour\src\chdTour.DataAccess.Contracts\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 

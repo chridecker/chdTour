@@ -9,5 +9,7 @@ namespace chdTour.DataAccess.Contracts.Domain
     {
         public string Title { get; set; }
 
+        public virtual ICollection<Grade> Grades { get; set; } = [];
+
     }
 }
