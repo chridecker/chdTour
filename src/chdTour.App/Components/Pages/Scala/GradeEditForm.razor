@@ -1,0 +1,10 @@
+@using chdTour.App.Components.Base
+@using chdTour.App.Components.Inputs
+@using chdTour.DataAccess.Contracts.Domain
+
+@inherits BaseEditForm<IGradeRepository,Grade>
+
+<EditFormLayout @ref="this._layout" Value="this.Value">
+    <EditFormNumber  Title="Reihenfolge" Property="x => x.SequenceNumber" Value="this.Value" />
+    <EditFormImage  Title="Bild" Property="x => x.PictureThumbnail" Value="this.Value" />
+</EditFormLayout>
