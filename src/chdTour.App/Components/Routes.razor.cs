@@ -11,7 +11,6 @@ namespace chdTour.App.Components
         [Inject] IVibrationHelper _vibrationHelper { get; set; }
         [Inject] IBaseUIComponentHandler _baseUIComponentHandler { get; set; }
 
-        private bool _isDeveloperMode;
 
 
         protected override async Task OnAfterRenderAsync(bool firstRender)
