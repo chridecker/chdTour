@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("chdTour.Contracts")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6eb8919c83b846dce1d32526a7251c0c22ef98b7")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+77c8b3f3f642c70c6d19243f09aca5cc404e77e6")]
 [assembly: System.Reflection.AssemblyProductAttribute("chdTour.Contracts")]
 [assembly: System.Reflection.AssemblyTitleAttribute("chdTour.Contracts")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
