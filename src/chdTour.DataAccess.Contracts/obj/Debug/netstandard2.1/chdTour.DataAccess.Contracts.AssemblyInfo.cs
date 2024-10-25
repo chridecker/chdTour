@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("chdTour.DataAccess.Contracts")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+71c4258ffc6f59804633f718933999cf2d41b242")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e1e730e7a5b19b64e002617fce16836f2e2e54cf")]
 [assembly: System.Reflection.AssemblyProductAttribute("chdTour.DataAccess.Contracts")]
 [assembly: System.Reflection.AssemblyTitleAttribute("chdTour.DataAccess.Contracts")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

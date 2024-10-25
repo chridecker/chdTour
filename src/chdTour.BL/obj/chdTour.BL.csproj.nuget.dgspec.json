@@ -1,23 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Source\\CHD\\chdTour\\src\\chdTour.BL\\chdTour.BL.csproj": {}
+    "D:\\Source\\chdTour\\src\\chdTour.BL\\chdTour.BL.csproj": {}
   },
   "projects": {
-    "C:\\Source\\CHD\\chdTour\\src\\chdTour.BL\\chdTour.BL.csproj": {
+    "D:\\Source\\chdTour\\src\\chdTour.BL\\chdTour.BL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Source\\CHD\\chdTour\\src\\chdTour.BL\\chdTour.BL.csproj",
+        "projectUniqueName": "D:\\Source\\chdTour\\src\\chdTour.BL\\chdTour.BL.csproj",
         "projectName": "chdTour.BL",
-        "projectPath": "C:\\Source\\CHD\\chdTour\\src\\chdTour.BL\\chdTour.BL.csproj",
-        "packagesPath": "C:\\Users\\decker\\.nuget\\packages\\",
-        "outputPath": "C:\\Source\\CHD\\chdTour\\src\\chdTour.BL\\obj\\",
+        "projectPath": "D:\\Source\\chdTour\\src\\chdTour.BL\\chdTour.BL.csproj",
+        "packagesPath": "C:\\Users\\chris\\.nuget\\packages\\",
+        "outputPath": "D:\\Source\\chdTour\\src\\chdTour.BL\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\decker\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\chris\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -25,24 +26,23 @@
           "net8.0"
         ],
         "sources": {
-          "C:\\CHD\\Nuget": {},
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "C:\\Program Files\\dotnet\\library-packs": {},
-          "https://api.nuget.org/v3/index.json": {},
-          "https://srvtfs:8085/nuget/": {}
+          "D:\\Nuget": {},
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Source\\CHD\\chdTour\\src\\chdTour.Contracts\\chdTour.Contracts.csproj": {
-                "projectPath": "C:\\Source\\CHD\\chdTour\\src\\chdTour.Contracts\\chdTour.Contracts.csproj"
+              "D:\\Source\\chdTour\\src\\chdTour.Contracts\\chdTour.Contracts.csproj": {
+                "projectPath": "D:\\Source\\chdTour\\src\\chdTour.Contracts\\chdTour.Contracts.csproj"
               },
-              "C:\\Source\\CHD\\chdTour\\src\\chdTour.DataAccess\\chdTour.DataAccess.csproj": {
-                "projectPath": "C:\\Source\\CHD\\chdTour\\src\\chdTour.DataAccess\\chdTour.DataAccess.csproj"
+              "D:\\Source\\chdTour\\src\\chdTour.DataAccess\\chdTour.DataAccess.csproj": {
+                "projectPath": "D:\\Source\\chdTour\\src\\chdTour.DataAccess\\chdTour.DataAccess.csproj"
               },
-              "C:\\Source\\CHD\\chdTour\\src\\chdTour.Persistence.EF\\chdTour.Persistence.EF.csproj": {
-                "projectPath": "C:\\Source\\CHD\\chdTour\\src\\chdTour.Persistence.EF\\chdTour.Persistence.EF.csproj"
+              "D:\\Source\\chdTour\\src\\chdTour.Persistence.EF\\chdTour.Persistence.EF.csproj": {
+                "projectPath": "D:\\Source\\chdTour\\src\\chdTour.Persistence.EF\\chdTour.Persistence.EF.csproj"
               }
             }
           }
@@ -83,24 +83,25 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Source\\CHD\\chdTour\\src\\chdTour.Contracts\\chdTour.Contracts.csproj": {
+    "D:\\Source\\chdTour\\src\\chdTour.Contracts\\chdTour.Contracts.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Source\\CHD\\chdTour\\src\\chdTour.Contracts\\chdTour.Contracts.csproj",
+        "projectUniqueName": "D:\\Source\\chdTour\\src\\chdTour.Contracts\\chdTour.Contracts.csproj",
         "projectName": "chdTour.Contracts",
-        "projectPath": "C:\\Source\\CHD\\chdTour\\src\\chdTour.Contracts\\chdTour.Contracts.csproj",
-        "packagesPath": "C:\\Users\\decker\\.nuget\\packages\\",
-        "outputPath": "C:\\Source\\CHD\\chdTour\\src\\chdTour.Contracts\\obj\\",
+        "projectPath": "D:\\Source\\chdTour\\src\\chdTour.Contracts\\chdTour.Contracts.csproj",
+        "packagesPath": "C:\\Users\\chris\\.nuget\\packages\\",
+        "outputPath": "D:\\Source\\chdTour\\src\\chdTour.Contracts\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\decker\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\chris\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -108,11 +109,10 @@
           "netstandard2.1"
         ],
         "sources": {
-          "C:\\CHD\\Nuget": {},
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "C:\\Program Files\\dotnet\\library-packs": {},
-          "https://api.nuget.org/v3/index.json": {},
-          "https://srvtfs:8085/nuget/": {}
+          "D:\\Nuget": {},
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "netstandard2.1": {
@@ -145,29 +145,36 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "NETStandard.Library.Ref",
+              "version": "[2.1.0, 2.1.0]"
+            }
+          ],
           "frameworkReferences": {
             "NETStandard.Library": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Source\\CHD\\chdTour\\src\\chdTour.DataAccess.Contracts\\chdTour.DataAccess.Contracts.csproj": {
+    "D:\\Source\\chdTour\\src\\chdTour.DataAccess.Contracts\\chdTour.DataAccess.Contracts.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Source\\CHD\\chdTour\\src\\chdTour.DataAccess.Contracts\\chdTour.DataAccess.Contracts.csproj",
+        "projectUniqueName": "D:\\Source\\chdTour\\src\\chdTour.DataAccess.Contracts\\chdTour.DataAccess.Contracts.csproj",
         "projectName": "chdTour.DataAccess.Contracts",
-        "projectPath": "C:\\Source\\CHD\\chdTour\\src\\chdTour.DataAccess.Contracts\\chdTour.DataAccess.Contracts.csproj",
-        "packagesPath": "C:\\Users\\decker\\.nuget\\packages\\",
-        "outputPath": "C:\\Source\\CHD\\chdTour\\src\\chdTour.DataAccess.Contracts\\obj\\",
+        "projectPath": "D:\\Source\\chdTour\\src\\chdTour.DataAccess.Contracts\\chdTour.DataAccess.Contracts.csproj",
+        "packagesPath": "C:\\Users\\chris\\.nuget\\packages\\",
+        "outputPath": "D:\\Source\\chdTour\\src\\chdTour.DataAccess.Contracts\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\decker\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\chris\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -175,11 +182,10 @@
           "netstandard2.1"
         ],
         "sources": {
-          "C:\\CHD\\Nuget": {},
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "C:\\Program Files\\dotnet\\library-packs": {},
-          "https://api.nuget.org/v3/index.json": {},
-          "https://srvtfs:8085/nuget/": {}
+          "D:\\Nuget": {},
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "netstandard2.1": {
@@ -212,29 +218,36 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "NETStandard.Library.Ref",
+              "version": "[2.1.0, 2.1.0]"
+            }
+          ],
           "frameworkReferences": {
             "NETStandard.Library": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Source\\CHD\\chdTour\\src\\chdTour.DataAccess\\chdTour.DataAccess.csproj": {
+    "D:\\Source\\chdTour\\src\\chdTour.DataAccess\\chdTour.DataAccess.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Source\\CHD\\chdTour\\src\\chdTour.DataAccess\\chdTour.DataAccess.csproj",
+        "projectUniqueName": "D:\\Source\\chdTour\\src\\chdTour.DataAccess\\chdTour.DataAccess.csproj",
         "projectName": "chdTour.DataAccess",
-        "projectPath": "C:\\Source\\CHD\\chdTour\\src\\chdTour.DataAccess\\chdTour.DataAccess.csproj",
-        "packagesPath": "C:\\Users\\decker\\.nuget\\packages\\",
-        "outputPath": "C:\\Source\\CHD\\chdTour\\src\\chdTour.DataAccess\\obj\\",
+        "projectPath": "D:\\Source\\chdTour\\src\\chdTour.DataAccess\\chdTour.DataAccess.csproj",
+        "packagesPath": "C:\\Users\\chris\\.nuget\\packages\\",
+        "outputPath": "D:\\Source\\chdTour\\src\\chdTour.DataAccess\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\decker\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\chris\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -242,21 +255,20 @@
           "net8.0"
         ],
         "sources": {
-          "C:\\CHD\\Nuget": {},
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "C:\\Program Files\\dotnet\\library-packs": {},
-          "https://api.nuget.org/v3/index.json": {},
-          "https://srvtfs:8085/nuget/": {}
+          "D:\\Nuget": {},
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Source\\CHD\\chdTour\\src\\chdTour.DataAccess.Contracts\\chdTour.DataAccess.Contracts.csproj": {
-                "projectPath": "C:\\Source\\CHD\\chdTour\\src\\chdTour.DataAccess.Contracts\\chdTour.DataAccess.Contracts.csproj"
+              "D:\\Source\\chdTour\\src\\chdTour.DataAccess.Contracts\\chdTour.DataAccess.Contracts.csproj": {
+                "projectPath": "D:\\Source\\chdTour\\src\\chdTour.DataAccess.Contracts\\chdTour.DataAccess.Contracts.csproj"
               },
-              "C:\\Source\\CHD\\chdTour\\src\\chdTour.Persistence.EF\\chdTour.Persistence.EF.csproj": {
-                "projectPath": "C:\\Source\\CHD\\chdTour\\src\\chdTour.Persistence.EF\\chdTour.Persistence.EF.csproj"
+              "D:\\Source\\chdTour\\src\\chdTour.Persistence.EF\\chdTour.Persistence.EF.csproj": {
+                "projectPath": "D:\\Source\\chdTour\\src\\chdTour.Persistence.EF\\chdTour.Persistence.EF.csproj"
               }
             }
           }
@@ -291,24 +303,25 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Source\\CHD\\chdTour\\src\\chdTour.Persistence.EF\\chdTour.Persistence.EF.csproj": {
+    "D:\\Source\\chdTour\\src\\chdTour.Persistence.EF\\chdTour.Persistence.EF.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Source\\CHD\\chdTour\\src\\chdTour.Persistence.EF\\chdTour.Persistence.EF.csproj",
+        "projectUniqueName": "D:\\Source\\chdTour\\src\\chdTour.Persistence.EF\\chdTour.Persistence.EF.csproj",
         "projectName": "chdTour.Persistence.EF",
-        "projectPath": "C:\\Source\\CHD\\chdTour\\src\\chdTour.Persistence.EF\\chdTour.Persistence.EF.csproj",
-        "packagesPath": "C:\\Users\\decker\\.nuget\\packages\\",
-        "outputPath": "C:\\Source\\CHD\\chdTour\\src\\chdTour.Persistence.EF\\obj\\",
+        "projectPath": "D:\\Source\\chdTour\\src\\chdTour.Persistence.EF\\chdTour.Persistence.EF.csproj",
+        "packagesPath": "C:\\Users\\chris\\.nuget\\packages\\",
+        "outputPath": "D:\\Source\\chdTour\\src\\chdTour.Persistence.EF\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\decker\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\chris\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -316,18 +329,17 @@
           "net8.0"
         ],
         "sources": {
-          "C:\\CHD\\Nuget": {},
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "C:\\Program Files\\dotnet\\library-packs": {},
-          "https://api.nuget.org/v3/index.json": {},
-          "https://srvtfs:8085/nuget/": {}
+          "D:\\Nuget": {},
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Source\\CHD\\chdTour\\src\\chdTour.DataAccess.Contracts\\chdTour.DataAccess.Contracts.csproj": {
-                "projectPath": "C:\\Source\\CHD\\chdTour\\src\\chdTour.DataAccess.Contracts\\chdTour.DataAccess.Contracts.csproj"
+              "D:\\Source\\chdTour\\src\\chdTour.DataAccess.Contracts\\chdTour.DataAccess.Contracts.csproj": {
+                "projectPath": "D:\\Source\\chdTour\\src\\chdTour.DataAccess.Contracts\\chdTour.DataAccess.Contracts.csproj"
               }
             }
           }
@@ -368,7 +380,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
