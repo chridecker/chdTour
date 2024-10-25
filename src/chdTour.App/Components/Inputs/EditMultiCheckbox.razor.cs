@@ -13,7 +13,7 @@ namespace chdTour.App.Components.Inputs
         where TParentRepo : IBaseRepository<TParent>
         where TRepo : IBaseRepository<T>
         where T : class
-        where TParent : class
+        where TParent : BaseEntity<Guid>
         where TMultiAssign : class
     {
         [Inject] TRepo _repository { get; set; }

@@ -11,41 +11,27 @@ using Microsoft.JSInterop;
 
 namespace chdTour.App.Components.Inputs
 {
-    public partial class EditFormLayout<TRepo, T> : ComponentBase, IDisposable
+    public partial class EditFormLayout<TRepo, T> : ComponentBase
         where TRepo : IBaseRepository<T>
         where T : class
     {
         [CascadingParameter] public BlazoredModalInstance Modal { get; set; }
 
         [Inject] private IModalService _modal { get; set; }
-        [Inject] private IJSRuntime _js { get; set; }
         [Inject] private TRepo _repository { get; set; }
-        [Inject] private NavigationManager _navigationManager { get; set; }
 
         [Parameter] public T Value { get; set; }
         [Parameter] public RenderFragment? ChildContent { get; set; }
         [Parameter] public EventCallback OnBack { get; set; }
         [Parameter] public CancellationToken Token { get; set; }
+        [Parameter] public bool IsNew { get; set; }
 
         private IDisposable _registerLocationChangeHandler;
-
-        public event EventHandler<T> SaveInvoked;
 
         public Func<Task<bool>>? ValidateBeforeSave { get; set; } = null;
 
         public Func<T, Task> NewEntity { get; set; }
 
-        protected override void OnInitialized()
-        {
-            this._registerLocationChangeHandler = this._navigationManager.RegisterLocationChangingHandler(OnLocationChanging);
-            base.OnInitialized();
-        }
-
-        private async Task New()
-        {
-            await this.HandleNewEntity(Activator.CreateInstance<T>());
-            await this.InvokeAsync(StateHasChanged);
-        }
 
         private async Task Save()
         {
@@ -55,17 +41,14 @@ namespace chdTour.App.Components.Inputs
 
                 if (!valid) { return; }
             }
-
             if (this.Modal is not null)
             {
-                await this.Modal.CloseAsync();
+                await this.Modal.CloseAsync(ModalResult.Ok());
                 return;
             }
-
             var modal = this._modal.ShowLoading();
             try
             {
-                this.SaveInvoked?.Invoke(this, this.Value);
                 await this._repository.SaveAsync(this.Value, this.Token);
             }
             catch (Exception ex)
@@ -76,6 +59,8 @@ namespace chdTour.App.Components.Inputs
             {
                 modal.Close();
             }
+
+
         }
 
         private async Task Delete()
@@ -95,49 +80,12 @@ namespace chdTour.App.Components.Inputs
             }
         }
 
-        private async Task HandleNewEntity(T entity)
-        {
-            if (entity is BaseEntity<Guid> baseEntity)
-            {
-                baseEntity.Id = Guid.NewGuid();
-            }
-            await this.NewEntity.Invoke(entity);
-        }
-
-        public async Task OpenChanges() => await this._modal.ShowDialog("Sie haben offene Änderungen.", EDialogButtons.OK);
-
-        private object? GetId()
-        {
-            var prop = this.Value.GetType().GetProperty(nameof(BaseEntity<Guid>.Id));
-            return prop?.GetValue(this.Value);
-        }
-
-        private async Task CopyId() => await this._js.InvokeVoidAsync("navigator.clipboard.writeText", this.GetId()?.ToString());
-
-        private async ValueTask OnLocationChanging(LocationChangingContext context)
-        {
-            var res = await this.PreventNavigationForOpenChanges();
-            if (res) { context.PreventNavigation(); }
-        }
-
-        private async Task<bool> PreventNavigationForOpenChanges()
-        {
-            var res = await this._modal.ShowDialog("Wollen Sie die Seite wirklich verlassen?", EDialogButtons.YesNo);
-            if (res != EDialogResult.Yes) { return true; }
-            return false;
-        }
-
         public async Task InvokeStateChange() => await this.InvokeAsync(StateHasChanged);
 
 
         private async Task Back()
         {
             await this.OnBack.InvokeAsync();
-        }
-
-        public void Dispose()
-        {
-            this._registerLocationChangeHandler?.Dispose();
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using chdTour.App.Components.Inputs;
+using chdTour.DataAccess.Contracts.Domain.Base;
 using chdTour.DataAccess.Contracts.Interfaces.Repositories.Base;
 using Microsoft.AspNetCore.Components;
 using Microsoft.EntityFrameworkCore;
@@ -7,9 +8,9 @@ using System.Reflection;
 
 namespace chdTour.App.Components.Base
 {
-    public class BaseEditCollectionInput<TParentRepo, T, TParent> : ComponentBase, IDisposable
+    public class BaseEditCollectionInput<TParentRepo, T, TParent> : ComponentBase
         where TParentRepo : IBaseRepository<TParent>
-        where TParent : class
+        where TParent : BaseEntity<Guid>
         where T : class
     {
         [Inject] protected TParentRepo _parentRepository { get; set; }
@@ -19,6 +20,7 @@ namespace chdTour.App.Components.Base
         [Parameter] public Expression<Func<TParent, ICollection<T>>> CollectionProperty { get; set; }
 
         [Parameter] public Expression<Func<T, object>> OneAssignedProperty { get; set; }
+        [Parameter] public Expression<Func<T, object>> OneAssignedPropertyId { get; set; }
 
         [Parameter] public TParent ParentEntity { get; set; }
 
@@ -27,21 +29,19 @@ namespace chdTour.App.Components.Base
 
         protected ICollection<T> _entities => (ICollection<T>?)this._propertyInfoCollection.GetValue(this.ParentEntity);
         protected PropertyInfo _propertyInfoOneAssign;
+        protected PropertyInfo _propertyInfoOneIdAssign;
 
         private PropertyInfo _propertyInfoCollection;
-
-        public List<T> RemovedEntities { get; set; } = [];
-        public List<T> AddedEntities { get; set; } = [];
 
 
         protected override void OnInitialized()
         {
-            this._parentLayout.SaveInvoked += this._parentLayout_SaveInvoked;
-
             var memberExpressionCollection = this.CollectionProperty.Body as MemberExpression ?? throw new ArgumentException("The expression is not a member access expression.", nameof(this.CollectionProperty));
             var memberExpression = this.OneAssignedProperty.Body as MemberExpression ?? throw new ArgumentException("The expression is not a member access expression.", nameof(this.OneAssignedProperty));
+            var memberIdExpression = this.OneAssignedPropertyId.Body as MemberExpression ?? throw new ArgumentException("The expression is not a member access expression.", nameof(this.OneAssignedProperty));
             this._propertyInfoCollection = memberExpressionCollection.Member as PropertyInfo ?? throw new ArgumentException("The member access expression does not access a property.", nameof(this.CollectionProperty));
             this._propertyInfoOneAssign = memberExpression.Member as PropertyInfo ?? throw new ArgumentException("The member access expression does not access a property.", nameof(this.OneAssignedProperty));
+            this._propertyInfoOneIdAssign = memberExpression.Member as PropertyInfo ?? throw new ArgumentException("The member access expression does not access a property.", nameof(this.OneAssignedProperty));
 
             if (!typeof(TParent).IsAssignableTo(this._propertyInfoOneAssign.PropertyType))
             {
@@ -56,14 +56,14 @@ namespace chdTour.App.Components.Base
             switch (state)
             {
                 case EntityState.Deleted:
-                    this.RemovedEntities.Add(value);
                     this._entities.Remove(value);
+                    await this._parentRepository.SaveAsync(this.ParentEntity, this.Token);
                     break;
                 case EntityState.Added:
-                    this.AddedEntities.Add(value);
                     if (!this._entities.Contains(value))
                     {
                         this._entities.Add(value);
+                        await this._parentRepository.SaveAsync(this.ParentEntity, this.Token);
                     }
                     break;
                 default:
@@ -71,17 +71,6 @@ namespace chdTour.App.Components.Base
             }
 
             await this._parentLayout.InvokeStateChange();
-        }
-
-        private void _parentLayout_SaveInvoked(object? sender, TParent e)
-        {
-            this.AddedEntities.Clear();
-            this.RemovedEntities.Clear();
-        }
-
-        public void Dispose()
-        {
-            this._parentLayout.SaveInvoked -= this._parentLayout_SaveInvoked;
         }
     }
 }

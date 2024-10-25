@@ -1,28 +1,26 @@
 ﻿@using chd.UI.Base.Components.General
+@using chd.UI.Base.Contracts.Enum
 @typeparam TRepo
 @typeparam T
 
 <CascadingValue Value="this">
     <div class="edit-form">
-        <div class="header">
-            @if (this.OnBack.HasDelegate)
-            {
-                <IconButton FAClass="chevron-left" OnClick="this.Back" />
-            }
-
-            <div class="entity-info">
-            </div>
-
-            <div class="button-container">
-                <IconButton FAClass="plus" OnClick="this.New" />
-
-                <IconButton FAClass="floppy-disk" OnClick="this.Save" />
-                <IconButton FAClass="trash" OnClick="this.Delete" />
-
-            </div>
-        </div>
         <div class="content">
             @this.ChildContent
         </div>
     </div>
 </CascadingValue>
+@if (this.Modal is null)
+{
+    <FloatingActionNavigation FAIconActive="chevron-left" TextActive="Zurück" OnClick="this.Back">
+        <FloatingActionButton FAClass="trash" Title="Löschen" OnClick="this.Delete" />
+        <FloatingActionButton FAClass="floppy-disk" Title="Speichern" OnClick="this.Save" />
+    </FloatingActionNavigation>
+}
+else
+{
+    <dic class="buttons">
+        <IconButton OnClick="this.Back" ButtonStyle="EButtonStyle.Cancel" FAClass="xmark">Abbrechen</IconButton>
+        <IconButton OnClick="this.Save" ButtonStyle="EButtonStyle.Primary" FAClass="floppy-disk">Speichern</IconButton>
+    </dic>
+}

@@ -1,22 +1,27 @@
 ﻿@using chd.UI.Base.Components.General
 @using chd.UI.Base.Components.General.Table
 @using chdTour.App.Components.Base
+@using chdTour.DataAccess.Contracts.Domain.Base
 @using chdTour.DataAccess.Contracts.Interfaces.Repositories.Base
 
 @typeparam TRepo where TRepo : IBaseRepository<T>
 @typeparam TParentRepo where TParentRepo : IBaseRepository<TParent>
 @typeparam T where T : class
-@typeparam TParent where TParent : class
+@typeparam TParent where TParent : BaseEntity<Guid>
 @typeparam TForm where TForm : BaseEditForm<TRepo, T>
 @inherits BaseEditCollectionInput<TParentRepo,T,TParent>
 
 <EditFormInput Title="@this.Title">
     <div class="edit-multi-assignment-form">
+        <IconButton FAClass="plus" OnClick="this.New">@this.EntityName hinzufügen</IconButton>
+        <Table Items="this.Items">
+            <HeaderContent>
+                @HeaderContent
+            </HeaderContent>
+            <RowTemplate Context="item">
+                @RowTemplate(item)
+            </RowTemplate>
+        </Table>
 
-        <EntityUltraGrid FieldValueChanged="this.FieldValueChanged" T="T" Items="this.Items" OnEdit="this.Edit" OnDelete="this.Delete">
-            <ButtonContent>
-                <IconButton FAClass="plus" OnClick="this.New">@this.EntityName hinzufügen</IconButton>
-            </ButtonContent>
-        </EntityUltraGrid>
     </div>
 </EditFormInput>

@@ -28,7 +28,7 @@ namespace chdTour.BL.Extensions
                 }
 
                 options.UseSqlite($"Data Source={Path.Combine(path, $"{nameof(chdTourContext)}.db")}");
-            });
+            },ServiceLifetime.Transient);
 
             services.AddTransient<IPersonRepository, PersonRepository>();
             services.AddTransient<ITourRepository, TourRepository>();

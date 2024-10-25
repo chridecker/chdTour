@@ -1,4 +1,5 @@
-﻿using chdTour.DataAccess.Contracts.Interfaces.Repositories.Base;
+﻿using chdTour.DataAccess.Contracts.Domain.Base;
+using chdTour.DataAccess.Contracts.Interfaces.Repositories.Base;
 
 namespace chdTour.App.Components.Base
 {
@@ -6,7 +7,7 @@ namespace chdTour.App.Components.Base
         where TParentRepo : IBaseRepository<TParent>
         where TRepo : IBaseRepository<T>
         where T : class
-        where TParent : class
+        where TParent : BaseEntity<Guid>
         where TAssign : class
     {
 

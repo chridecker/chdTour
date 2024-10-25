@@ -1,4 +1,5 @@
 using chdTour.App.Components.Base;
+using chdTour.DataAccess.Contracts.Domain.Base;
 using chdTour.DataAccess.Contracts.Interfaces.Repositories.Base;
 using Microsoft.AspNetCore.Components;
 
@@ -8,7 +9,7 @@ namespace chdTour.App.Components.Inputs
         where T : class
         where TRepo : IBaseRepository<T>
         where TParentRepo : IBaseRepository<TParent>
-        where TParent : class
+        where TParent : BaseEntity<Guid>
         where TModal : BaseEditCollectionForm<TRepo, TParentRepo, T, TParent>
     {
 

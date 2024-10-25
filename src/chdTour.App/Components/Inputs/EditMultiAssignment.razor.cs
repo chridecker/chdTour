@@ -15,7 +15,7 @@ namespace chdTour.App.Components.Inputs
         where TRepo : IBaseRepository<T>
         where TParentRepo : IBaseRepository<TParent>
         where T : class
-        where TParent : class
+        where TParent : BaseEntity<Guid>
         where TForm : BaseEditForm<TRepo, T>
     {
 
@@ -23,14 +23,10 @@ namespace chdTour.App.Components.Inputs
         [Inject] private TRepo _repo { get; set; }
 
         [Parameter] public string EntityName { get; set; }
+        [Parameter] public RenderFragment? HeaderContent { get; set; }
+        [Parameter] public RenderFragment<T>? RowTemplate { get; set; }
 
         private IEnumerable<T> Items => this._entities;
-
-        private async Task FieldValueChanged(T item, object value, PropertyInfo propInfo)
-        {
-            propInfo.SetValue(item, value);
-            await this.ValueChanged(item, EntityState.Modified);
-        }
 
         public async Task New()
         {
@@ -40,31 +36,10 @@ namespace chdTour.App.Components.Inputs
                 entity.Id = Guid.NewGuid();
             }
             this._propertyInfoOneAssign.SetValue(newEntity, this.ParentEntity);
-            if (!await this.OpenModal(newEntity))
+            this._propertyInfoOneIdAssign.SetValue(newEntity, this.ParentEntity.Id);
+            if (await this.OpenModal(newEntity))
             {
-                await this._repo.DeleteAsync(newEntity, this.Token);
-                return;
-            }
-            await this.ValueChanged(newEntity, EntityState.Added);
-        }
-
-        public async Task Edit(T entity)
-        {
-            if (await this.OpenModal(entity))
-            {
-                await this.ValueChanged(entity, EntityState.Modified);
-            }
-            else
-            {
-            }
-        }
-        public async Task Delete(T entity)
-        {
-            var dialog = await this._modal.ShowDialog("Löschen?", EDialogButtons.YesNo);
-            if (dialog == EDialogResult.Yes)
-            {
-                await this._repo.DeleteAsync(entity, this.Token);
-                await this.ValueChanged(entity, EntityState.Deleted);
+                await this.ValueChanged(newEntity, EntityState.Added);
             }
         }
 

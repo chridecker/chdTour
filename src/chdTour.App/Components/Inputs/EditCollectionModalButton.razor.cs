@@ -1,5 +1,6 @@
 using Blazored.Modal;
 using chdTour.App.Components.Base;
+using chdTour.DataAccess.Contracts.Domain.Base;
 using chdTour.DataAccess.Contracts.Interfaces.Repositories.Base;
 using Microsoft.AspNetCore.Components;
 using System.Linq.Expressions;
@@ -7,11 +8,11 @@ using System.Reflection;
 
 namespace chdTour.App.Components.Inputs
 {
-    public partial class EditCollectionModalButton<TRepo, TParentRepo, T, TParent, TModalForm> : BaseEditModalButton<TParentRepo, TParent>, IDisposable
+    public partial class EditCollectionModalButton<TRepo, TParentRepo, T, TParent, TModalForm> : BaseEditModalButton<TParentRepo, TParent>
         where TParentRepo : IBaseRepository<TParent>
         where TRepo : IBaseRepository<T>
         where T : class
-        where TParent : class
+        where TParent : BaseEntity<Guid>
         where TModalForm : BaseEditCollectionForm<TRepo, TParentRepo, T, TParent>
     {
         [Parameter] public ICollection<T> Items { get; set; }
@@ -24,11 +25,6 @@ namespace chdTour.App.Components.Inputs
         private List<T> _added = [];
         private List<T> _removed = [];
 
-        protected override void OnInitialized()
-        {
-            this._parentLayout.SaveInvoked += this._parentLayout_SaveInvoked;
-            base.OnInitialized();
-        }
 
         protected override void OnParametersSet()
         {
@@ -50,18 +46,6 @@ namespace chdTour.App.Components.Inputs
                 {nameof(EditCollectionModalRenderForm<TRepo,TParentRepo, T,TParent, TModalForm>.Removed), this._removed },
             };
             await this._modal.Show<EditCollectionModalRenderForm<TRepo, TParentRepo, T, TParent, TModalForm>>(this.Title, param).Result;
-        }
-
-        private void _parentLayout_SaveInvoked(object? sender, TParent e)
-        {
-            this._added.Clear();
-            this._removed.Clear();
-        }
-
-
-        public void Dispose()
-        {
-            this._parentLayout.SaveInvoked -= this._parentLayout_SaveInvoked;
         }
     }
 }

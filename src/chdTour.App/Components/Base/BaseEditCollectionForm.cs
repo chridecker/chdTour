@@ -1,4 +1,5 @@
-﻿using chdTour.DataAccess.Contracts.Interfaces.Repositories.Base;
+﻿using chdTour.DataAccess.Contracts.Domain.Base;
+using chdTour.DataAccess.Contracts.Interfaces.Repositories.Base;
 using Microsoft.AspNetCore.Components;
 
 namespace chdTour.App.Components.Base
@@ -7,7 +8,7 @@ namespace chdTour.App.Components.Base
         where TParentRepo : IBaseRepository<TParent>
         where TRepo : IBaseRepository<T>
         where T : class
-        where TParent : class
+        where TParent : BaseEntity<Guid>
     {
         [Inject] protected TRepo _repository { get; set; }
 
@@ -23,8 +24,6 @@ namespace chdTour.App.Components.Base
             {
                 if (this._baseEditCollectionInput is null) { throw new Exception(nameof(BaseEditCollectionInput<TParentRepo, T, TParent>) + " nicht zugewiesen"); }
 
-                this._baseEditCollectionInput.AddedEntities = this.Added;
-                this._baseEditCollectionInput.RemovedEntities = this.Removed;
             }
             base.OnAfterRender(firstRender);
         }

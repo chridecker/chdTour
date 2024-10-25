@@ -9,6 +9,7 @@
     <EditMultiAssignment Title="Grad" TRepo="IGradeRepository" TParentRepo="IGradeScalaRepository" T="Grade"
                          TParent="GradeScala"
                          TForm="GradeEditForm"
+                         OneAssignedPropertyId="x => x.GradeScalaId"
                          OneAssignedProperty="x => x.GradeScala"
                          ParentEntity="this.Value" CollectionProperty="x => x.Grades" />
 </EditFormLayout>
