@@ -6,6 +6,5 @@ namespace chdTour.Contracts.Settings
 {
     public class DBSettings
     {
-        public string ConnectionString { get; set; }
     }
 }

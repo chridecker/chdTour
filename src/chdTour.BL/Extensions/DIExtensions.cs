@@ -21,8 +21,13 @@ namespace chdTour.BL.Extensions
         {
             services.AddDbContext<chdTourContext>((sp, options) =>
             {
-                var path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), $"{nameof(chdTourContext)}.db");
-                options.UseSqlite($"Data Source={path}");
+                var path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "chdTour");
+                if (!Directory.Exists(path))
+                {
+                    Directory.CreateDirectory(path);
+                }
+
+                options.UseSqlite($"Data Source={Path.Combine(path, $"{nameof(chdTourContext)}.db")}");
             });
 
             services.AddTransient<IPersonRepository, PersonRepository>();

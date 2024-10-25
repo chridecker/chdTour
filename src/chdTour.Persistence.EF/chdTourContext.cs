@@ -29,9 +29,8 @@ namespace chdTour.Persistence.EF
                 build.HasOne(x => x.TourType).WithMany(x => x.Tours).HasForeignKey(x => x.TourTypeId);
             });
 
-            modelBuilder.Entity<TourType>().HasOne(x => x.GradeScala).WithMany().HasForeignKey(x => x.GradeScala);
+            modelBuilder.Entity<TourType>().HasOne(x => x.GradeScala).WithMany().HasForeignKey(x => x.GradeScalaId);
             modelBuilder.Entity<GradeScala>().HasMany(x => x.Grades).WithOne(x => x.GradeScala).HasForeignKey(x => x.GradeScalaId);
-            modelBuilder.Entity<Grade>().HasOne(x => x.GradeScala).WithMany(x => x.Grades).HasForeignKey(x => x.GradeScalaId);
 
             modelBuilder.Entity<TourPartner>().HasKey(x => new { x.TourId, x.PartnerId });
 
