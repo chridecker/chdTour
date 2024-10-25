@@ -4,7 +4,6 @@
 
 @inherits BaseEditForm<IGradeRepository,Grade>
 
-<EditFormLayout @ref="this._layout" Value="this.Value">
-    <EditFormNumber  Title="Reihenfolge" Property="x => x.SequenceNumber" Value="this.Value" />
-    <EditFormImage  Title="Bild" Property="x => x.PictureThumbnail" Value="this.Value" />
+<EditFormLayout TRepo="IGradeRepository" T="Grade" @ref="this._layout" Value="this.Value">
+    <EditFormText TRepo="IGradeRepository" T="Grade" Title="Titel" Property="x => x.Title" Value="this.Value" />
 </EditFormLayout>

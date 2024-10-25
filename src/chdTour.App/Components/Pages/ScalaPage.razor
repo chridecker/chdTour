@@ -6,17 +6,18 @@
 @inherits BaseSearchForm<IGradeScalaRepository, GradeScala>
 
 
-<EntityTable T="GradeScala" TRepo="IGradeScalaRepository" Item="this._item" Items="this._items" OnEdit="async x => await this.SetEntity(x)">
+<EntityTable EntityName="Skala" T="GradeScala" TRepo="IGradeScalaRepository" Item="this._item" Items="this._items" OnEdit="async x => await this.SetEntity(x)">
     <ChildContent>
         <ScalaEdit OnBack="this.OnBack" Value="this._item" />
-    </ChildContent
+    </ChildContent>
     <HeaderContent>
         <TableHead>Title</TableHead>
         <TableHead>Grade</TableHead>
     </HeaderContent>
     <RowTemplate Context="entity">
         <TableData>@entity.Title</TableData>
-        <TableData
->@entity.Grades.Select(s => s.Title)</TableData>
+        <TableData>
+            @(string.Join(",",entity.Grades.Select(s => s.Title)))
+        </TableData>
     </RowTemplate>
 </EntityTable>

@@ -122,7 +122,7 @@ namespace chdTour.App.Components.Inputs
 
         private async Task<bool> PreventNavigationForOpenChanges()
         {
-            var res = await this._modal.ShowDialog("Wollen Sie die Seite wirklich verlassen? Es existieren offene Änderungen!", EDialogButtons.YesNo);
+            var res = await this._modal.ShowDialog("Wollen Sie die Seite wirklich verlassen?", EDialogButtons.YesNo);
             if (res != EDialogResult.Yes) { return true; }
             return false;
         }
@@ -132,10 +132,6 @@ namespace chdTour.App.Components.Inputs
 
         private async Task Back()
         {
-            var res = await this.PreventNavigationForOpenChanges();
-
-            if (res) { return; }
-
             await this.OnBack.InvokeAsync();
         }
 

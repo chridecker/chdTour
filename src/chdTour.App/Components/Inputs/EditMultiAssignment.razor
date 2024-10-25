@@ -12,6 +12,7 @@
 
 <EditFormInput Title="@this.Title">
     <div class="edit-multi-assignment-form">
+
         <EntityUltraGrid FieldValueChanged="this.FieldValueChanged" T="T" Items="this.Items" OnEdit="this.Edit" OnDelete="this.Delete">
             <ButtonContent>
                 <IconButton FAClass="plus" OnClick="this.New">@this.EntityName hinzufügen</IconButton>
