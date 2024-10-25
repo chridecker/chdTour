@@ -1,7 +1,7 @@
 ﻿<CascadingToolTip>
     <CascadingDropList>
         <CascadingBlazoredModal Position="ModalPosition.Middle" AnimationType="ModalAnimationType.None" Size="ModalSize.Automatic" HideCloseButton="false">
-            <CustomErrorBoundary HandleError="HandleError" IsDeveloperMode="@this._isDeveloperMode">
+            <CustomErrorBoundary HandleError="HandleError" IsDeveloperMode="true">
                 <Router AppAssembly="@typeof(MauiProgram).Assembly">
                     <Found Context="routeData">
                         <RouteView RouteData="@routeData" DefaultLayout="@typeof(Layout.MainLayout)" />
