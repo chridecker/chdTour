@@ -1,0 +1,103 @@
+﻿.edit-form {
+    width: 100%;
+    display: grid;
+    grid-template-rows: max-content auto;
+}
+
+    .edit-form .header {
+        display: flex;
+        flex-direction: row;
+        align-items: end;
+        justify-content: end;
+        gap: 0.5rem;
+    }
+
+        .edit-form .header .entity-info {
+            display: flex;
+            gap: 0.5rem;
+            flex-grow: 1;
+        }
+
+            .edit-form .header .entity-info .entity-name {
+            }
+
+            .edit-form .header .entity-info .entity-id {
+                user-select: none;
+            }
+
+        .edit-form .header > ::deep .btn {
+        }
+
+        .edit-form .header .button-container {
+            display: flex;
+            gap: 0.5rem;
+            grid-column: 2;
+        }
+
+            .edit-form .header .button-container ::deep .icon-button {
+                border: 1px solid var(--dionysys-font-color);
+                background-color: var(--dionysys-bg);
+            }
+
+            .edit-form .header .button-container ::deep .icon-button-clone {
+                background-color: var(--dionysys-green);
+                border: none;
+            }
+
+            .edit-form .header .button-container ::deep .icon-button-rotate {
+            }
+
+            .edit-form .header .button-container ::deep .icon-button-rotate-left {
+            }
+
+            .edit-form .header .button-container ::deep .icon-button-floppy-disk {
+            }
+
+            .edit-form .header .button-container ::deep .icon-button-trash {
+                background-color: var(--dionysys-red);
+                border: none;
+            }
+
+                .edit-form .header .button-container ::deep .icon-button-trash svg {
+                    fill: var(--dionysys-bg);
+                }
+
+            .edit-form .header .button-container.changed {
+            }
+
+                .edit-form .header .button-container.changed ::deep .icon-button {
+                }
+
+                .edit-form .header .button-container.changed ::deep .icon-button-clone {
+                    background-color: var(--dionysys-bg);
+                    border: 1px solid var(--dionysys-font-color);
+                }
+
+                .edit-form .header .button-container.changed ::deep .icon-button-rotate-left {
+                }
+
+                .edit-form .header .button-container.changed ::deep .icon-button-floppy-disk {
+                    background-color: var(--dionysys-green);
+                    border: none;
+                }
+
+                .edit-form .header .button-container.changed ::deep .icon-button-trash {
+                }
+
+            .edit-form .header .button-container.new {
+            }
+
+                .edit-form .header .button-container.new ::deep .icon-button-clone {
+                }
+
+                .edit-form .header .button-container.new ::deep .icon-button-rotate-left {
+                }
+
+                .edit-form .header .button-container.new ::deep .icon-button-floppy-disk {
+                }
+
+                .edit-form .header .button-container.new ::deep .icon-button-trash {
+                }
+
+    .edit-form .content {
+    }

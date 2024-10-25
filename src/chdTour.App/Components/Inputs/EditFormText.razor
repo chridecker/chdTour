@@ -1,0 +1,9 @@
+﻿@using chdTour.App.Components.Base
+@using chdTour.DataAccess.Contracts.Interfaces.Repositories.Base
+@typeparam TRepo where TRepo : IBaseRepository<T>
+@typeparam T where T : class
+@inherits BaseEditFormInput<TRepo,T, string>
+
+<EditFormInput Title="@this.Title">
+    <input type="text" value="@this.GetValue()" @onchange="(ChangeEventArgs args) => this.ValueChanged(args?.Value?.ToString())" disabled="@this.Disabled" />
+</EditFormInput>

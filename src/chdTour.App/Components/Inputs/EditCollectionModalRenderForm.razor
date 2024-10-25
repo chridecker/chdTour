@@ -1,0 +1,9 @@
+﻿@typeparam TRepo 
+@typeparam TParentRepo 
+@typeparam T 
+@typeparam TParent 
+@typeparam TModal
+
+<CascadingValue Value="this.ParentLayout">
+    <DynamicComponent  Type="typeof(TModal)" Parameters="this._parameterDict"></DynamicComponent>
+</CascadingValue>

@@ -1,0 +1,22 @@
+@page "/scala"
+@using chdTour.App.Components.Base
+@using chdTour.App.Components.Pages.Scala
+@using chdTour.DataAccess.Contracts.Domain
+
+@inherits BaseSearchForm<IGradeScalaRepository, GradeScala>
+
+
+<EntityTable T="GradeScala" TRepo="IGradeScalaRepository" Item="this._item" Items="this._items" OnEdit="async x => await this.SetEntity(x)">
+    <ChildContent>
+        <ScalaEdit OnBack="this.OnBack" Value="this._item" />
+    </ChildContent
+    <HeaderContent>
+        <TableHead>Title</TableHead>
+        <TableHead>Grade</TableHead>
+    </HeaderContent>
+    <RowTemplate Context="entity">
+        <TableData>@entity.Title</TableData>
+        <TableData
+>@entity.Grades.Select(s => s.Title)</TableData>
+    </RowTemplate>
+</EntityTable>

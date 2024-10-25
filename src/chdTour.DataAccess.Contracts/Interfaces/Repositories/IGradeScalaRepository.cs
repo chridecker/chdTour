@@ -6,7 +6,7 @@ using System.Text;
 
 namespace chdTour.DataAccess.Contracts.Interfaces.Repositories
 {
-    public interface IGradeScalaRepository : IBaseEntityRepository<GradeScala,Guid>
+    public interface IGradeScalaRepository : IBaseRepository<GradeScala>
     {
     }
 }

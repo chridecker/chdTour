@@ -1,0 +1,12 @@
+@using System.Globalization
+@inherits LayoutComponentBase
+
+<div class="header-panel">
+    <HeaderBase TUserId="int" TRightId="int" PageTitle="@this.PageTitle" ShowVersion="true" ShowDateInfo="false">
+       
+    </HeaderBase>
+</div>
+
+@code {
+    [Parameter] public string PageTitle { get; set; }
+}

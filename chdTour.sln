@@ -17,7 +17,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{84EF894C-6
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "chdTour.DataAccess", "src\chdTour.DataAccess\chdTour.DataAccess.csproj", "{C6C08D3B-0D63-47C4-8754-8D4D701D997F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "chdTour.App", "src\chdTour.App\chdTour.App.csproj", "{8F1FFFDB-EC08-4343-8C7A-EC696F334106}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "chdTour.App", "src\chdTour.App\chdTour.App.csproj", "{8F1FFFDB-EC08-4343-8C7A-EC696F334106}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "chdTour.Console", "src\chdTour.Console\chdTour.Console.csproj", "{4012CBF4-3FB8-4577-B551-DE976E215630}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{8F1FFFDB-EC08-4343-8C7A-EC696F334106}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8F1FFFDB-EC08-4343-8C7A-EC696F334106}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8F1FFFDB-EC08-4343-8C7A-EC696F334106}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{4012CBF4-3FB8-4577-B551-DE976E215630}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4012CBF4-3FB8-4577-B551-DE976E215630}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4012CBF4-3FB8-4577-B551-DE976E215630}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4012CBF4-3FB8-4577-B551-DE976E215630}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -62,6 +68,7 @@ Global
 		{C8DFE499-9B86-422F-B923-3EF47CE3F758} = {D334756F-7B28-49D6-A68D-C3CF2F4621F4}
 		{C6C08D3B-0D63-47C4-8754-8D4D701D997F} = {D334756F-7B28-49D6-A68D-C3CF2F4621F4}
 		{8F1FFFDB-EC08-4343-8C7A-EC696F334106} = {D334756F-7B28-49D6-A68D-C3CF2F4621F4}
+		{4012CBF4-3FB8-4577-B551-DE976E215630} = {D334756F-7B28-49D6-A68D-C3CF2F4621F4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A449874D-D58E-4DD2-81C9-D365BE9189A8}

@@ -1,0 +1,14 @@
+﻿.edit-form-input:has(> input) {
+    width: 15rem;
+}
+
+    .edit-form-input ::deep input:not([type=checkbox]) {
+        width: 100%;
+    }
+
+.edit-form-title {
+}
+
+    .edit-form-title.align-title-start {
+        align-self: start;
+    }

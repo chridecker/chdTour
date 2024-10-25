@@ -1,0 +1,5 @@
+﻿.edit-multi-assignment-form {
+    display: flex;
+    flex-direction: column;
+    width: max-content;
+}

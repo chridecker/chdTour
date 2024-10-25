@@ -15,7 +15,7 @@ namespace chdTour.Persistence.EF.Migrations
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "7.0.12");
+            modelBuilder.HasAnnotation("ProductVersion", "8.0.10");
 
             modelBuilder.Entity("chdTour.DataAccess.Contracts.Domain.Grade", b =>
                 {
@@ -26,7 +26,7 @@ namespace chdTour.Persistence.EF.Migrations
                     b.Property<DateTime>("Created")
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid>("ScalaId")
+                    b.Property<Guid>("GradeScalaId")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Title")
@@ -34,6 +34,8 @@ namespace chdTour.Persistence.EF.Migrations
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("GradeScalaId");
 
                     b.ToTable("Grades");
                 });
@@ -93,7 +95,11 @@ namespace chdTour.Persistence.EF.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid>("GradeId")
+                    b.Property<Guid?>("GradeId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Location")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<int>("Pitches")
@@ -106,10 +112,14 @@ namespace chdTour.Persistence.EF.Migrations
                     b.Property<DateTime>("TourDate")
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid>("TypeId")
+                    b.Property<Guid>("TourTypeId")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("GradeId");
+
+                    b.HasIndex("TourTypeId");
 
                     b.ToTable("Tours");
                 });
@@ -122,12 +132,9 @@ namespace chdTour.Persistence.EF.Migrations
                     b.Property<Guid>("PartnerId")
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid>("PersonObjId")
-                        .HasColumnType("TEXT");
-
                     b.HasKey("TourId", "PartnerId");
 
-                    b.HasIndex("PersonObjId");
+                    b.HasIndex("PartnerId");
 
                     b.ToTable("TourPartners");
                 });
@@ -141,20 +148,53 @@ namespace chdTour.Persistence.EF.Migrations
                     b.Property<DateTime>("Created")
                         .HasColumnType("TEXT");
 
+                    b.Property<Guid>("GradeScalaId")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("GradeScalaId");
+
                     b.ToTable("TourTypes");
+                });
+
+            modelBuilder.Entity("chdTour.DataAccess.Contracts.Domain.Grade", b =>
+                {
+                    b.HasOne("chdTour.DataAccess.Contracts.Domain.GradeScala", "GradeScala")
+                        .WithMany("Grades")
+                        .HasForeignKey("GradeScalaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("GradeScala");
+                });
+
+            modelBuilder.Entity("chdTour.DataAccess.Contracts.Domain.Tour", b =>
+                {
+                    b.HasOne("chdTour.DataAccess.Contracts.Domain.Grade", "Grade")
+                        .WithMany()
+                        .HasForeignKey("GradeId");
+
+                    b.HasOne("chdTour.DataAccess.Contracts.Domain.TourType", "TourType")
+                        .WithMany("Tours")
+                        .HasForeignKey("TourTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Grade");
+
+                    b.Navigation("TourType");
                 });
 
             modelBuilder.Entity("chdTour.DataAccess.Contracts.Domain.TourPartner", b =>
                 {
                     b.HasOne("chdTour.DataAccess.Contracts.Domain.Person", "PersonObj")
                         .WithMany("TourPartners")
-                        .HasForeignKey("PersonObjId")
+                        .HasForeignKey("PartnerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -169,6 +209,22 @@ namespace chdTour.Persistence.EF.Migrations
                     b.Navigation("TourObj");
                 });
 
+            modelBuilder.Entity("chdTour.DataAccess.Contracts.Domain.TourType", b =>
+                {
+                    b.HasOne("chdTour.DataAccess.Contracts.Domain.GradeScala", "GradeScala")
+                        .WithMany()
+                        .HasForeignKey("GradeScalaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("GradeScala");
+                });
+
+            modelBuilder.Entity("chdTour.DataAccess.Contracts.Domain.GradeScala", b =>
+                {
+                    b.Navigation("Grades");
+                });
+
             modelBuilder.Entity("chdTour.DataAccess.Contracts.Domain.Person", b =>
                 {
                     b.Navigation("TourPartners");
@@ -177,6 +233,11 @@ namespace chdTour.Persistence.EF.Migrations
             modelBuilder.Entity("chdTour.DataAccess.Contracts.Domain.Tour", b =>
                 {
                     b.Navigation("TourPartners");
+                });
+
+            modelBuilder.Entity("chdTour.DataAccess.Contracts.Domain.TourType", b =>
+                {
+                    b.Navigation("Tours");
                 });
 #pragma warning restore 612, 618
         }

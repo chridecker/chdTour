@@ -6,7 +6,7 @@ using System.Text;
 
 namespace chdTour.DataAccess.Contracts.Interfaces.Repositories
 {
-    public interface IPersonRepository : IBaseEntityRepository<Person,Guid>
+    public interface IPersonRepository : IBaseRepository<Person>
     {
     }
 }

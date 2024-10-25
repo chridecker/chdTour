@@ -1,0 +1,22 @@
+﻿@using chd.UI.Base.Components.General.Table
+@using chdTour.App.Components.Base
+@using chdTour.DataAccess.Contracts.Interfaces.Repositories.Base
+
+@typeparam TRepo where TRepo : IBaseRepository<T>
+@typeparam TParentRepo where TParentRepo : IBaseRepository<TParent>
+@typeparam T where T : class
+@typeparam TParent where TParent : class
+@typeparam TMultiAssign where TMultiAssign : class
+
+@inherits BaseEditCollectionInput<TParentRepo,T,TParent>
+
+<EditFormInput Title="@this.Title">
+    <div class="edit-multi-checkbox">
+        <Table Items="this.MultiAssignCollection">
+            <RowTemplate Context="item">
+                <TableData><input type="checkbox" checked="@this.MultiContains.Invoke(item)" @onchange="async (ChangeEventArgs args) => await this.ValueChanged(item,(bool)args.Value)" /></TableData>
+                <TableData>@ElementContent(item)</TableData>
+            </RowTemplate>
+        </Table>
+    </div>
+</EditFormInput>

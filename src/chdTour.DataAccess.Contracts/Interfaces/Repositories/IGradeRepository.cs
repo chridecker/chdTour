@@ -6,7 +6,7 @@ using System.Text;
 
 namespace chdTour.DataAccess.Contracts.Interfaces.Repositories
 {
-    public interface IGradeRepository : IBaseEntityRepository<Grade,Guid>
+    public interface IGradeRepository : IBaseRepository<Grade>
     {
     }
 }

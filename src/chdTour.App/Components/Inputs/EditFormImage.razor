@@ -1,0 +1,31 @@
+@using chdTour.App.Components.Base
+@using chdTour.DataAccess.Contracts.Interfaces.Repositories.Base
+@typeparam TRepo where TRepo : IBaseRepository<T>
+@typeparam T where T : class
+@inherits BaseEditFormInput<TRepo, T, byte[]>
+
+<EditFormInput Title="@this.Title">
+    @if (this.GetValue() is not null)
+    {
+        <img src="@GetImgUrl
+            " />
+    }
+    <InputFile OnChange="LoadFiles" />
+</EditFormInput>
+
+@code {
+    private string GetImgUrl => string.Format("data:image/jpeg;base64,{0}", Convert.ToBase64String(this.GetValue()));
+
+    private async Task LoadFiles(InputFileChangeEventArgs e)
+    {
+        using var stream = e.File.OpenReadStream();
+        byte[] buffer = new byte[16 * 1024];
+        using var ms = new MemoryStream();
+        int read;
+        while ((read = await stream.ReadAsync(buffer, 0, buffer.Length)) > 0)
+        {
+            ms.Write(buffer, 0, read);
+        }
+        await this.ValueChanged(ms.ToArray());
+    }
+}

@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -23,23 +24,28 @@ namespace chdTour.DataAccess.Repositories.Base
             }
         }
 
-        public async Task AddAsync(TEntity entity, CancellationToken cancellationToken = default)
-        {
-            await this._chdTourContext.AddAsync(entity, cancellationToken);
-            await this._chdTourContext.SaveChangesAsync(cancellationToken);
-        }
+        public IQueryable<TEntity> Where(Expression<Func<TEntity, bool>> expression) => this._chdTourContext.Set<TEntity>().Where(expression);
+        public async Task<TEntity> FirstOrDefaultAsync(Expression<Func<TEntity, bool>> expression) => await this._chdTourContext.Set<TEntity>().FirstOrDefaultAsync(expression);
 
+
+        public async Task<bool> SaveAsync(TEntity entity, CancellationToken cancellationToken)
+        {
+            if (this._chdTourContext.Entry<TEntity>(entity).State == EntityState.Detached)
+            {
+                await this._chdTourContext.AddAsync<TEntity>(entity, cancellationToken);
+            }
+            else
+            {
+                this._chdTourContext.Update<TEntity>(entity);
+            }
+
+            return (await this._chdTourContext.SaveChangesAsync(cancellationToken)) == 1;
+        }
+        public async Task<IEnumerable<TEntity>> FindAll(CancellationToken cancellationToken) => await this._chdTourContext.Set<TEntity>().ToListAsync(cancellationToken);
 
         public async Task DeleteAsync(TEntity entity, CancellationToken cancellationToken = default)
         {
-            this._chdTourContext.Remove(entity);
-            await this._chdTourContext.SaveChangesAsync(cancellationToken);
-        }
-
-
-        public async Task Update(TEntity entity, CancellationToken cancellationToken = default)
-        {
-            this._chdTourContext.Update<TEntity>(entity);
+            this._chdTourContext.Set<TEntity>().Remove(entity);
             await this._chdTourContext.SaveChangesAsync(cancellationToken);
         }
     }

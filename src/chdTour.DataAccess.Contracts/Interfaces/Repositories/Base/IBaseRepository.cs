@@ -9,7 +9,9 @@ namespace chdTour.DataAccess.Contracts.Interfaces.Repositories.Base
     public interface IBaseRepository<TEntity> where TEntity : class
     {
         Task DeleteAsync(TEntity entity, CancellationToken cancellationToken = default);
-        Task AddAsync(TEntity entity, CancellationToken cancellationToken = default);
-        Task Update(TEntity entity, CancellationToken cancellationToken = default);
+        Task<IEnumerable<TEntity>> FindAll(CancellationToken cancellationToken);
+        Task<TEntity> FirstOrDefaultAsync(System.Linq.Expressions.Expression<Func<TEntity, bool>> expression);
+        Task<bool> SaveAsync(TEntity entity, CancellationToken cancellationToken);
+        System.Linq.IQueryable<TEntity> Where(System.Linq.Expressions.Expression<Func<TEntity, bool>> expression);
     }
 }

@@ -12,13 +12,10 @@ using System.Threading.Tasks;
 
 namespace chdTour.DataAccess.Repositories
 {
-    public class GradeScalaRepository : BaseEntityRepository<GradeScala, Guid>, IGradeScalaRepository
+    public class GradeScalaRepository : BaseRepository<GradeScala>, IGradeScalaRepository
     {
         public GradeScalaRepository(chdTourContext chdTourContext) : base(chdTourContext)
         {
         }
-
-        public override async Task<IEnumerable<GradeScala>> GetAllAsync(CancellationToken cancellationToken = default)
-        => await this._chdTourContext.GradeScalas.ToListAsync(cancellationToken);
     }
 }

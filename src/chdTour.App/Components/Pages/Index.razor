@@ -1,0 +1,11 @@
+﻿@page "/"
+@inherits PageComponentBase<int,int>
+
+
+@code {
+    protected override async Task OnInitializedAsync()
+    {
+        this.Title = "Home";
+        await base.OnInitializedAsync();
+    }
+}

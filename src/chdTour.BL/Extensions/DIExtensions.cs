@@ -21,8 +21,8 @@ namespace chdTour.BL.Extensions
         {
             services.AddDbContext<chdTourContext>((sp, options) =>
             {
-                var path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "chdTour");
-                if (!Directory.Exists(path))
+                var path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "chdTour");
+               if (!Directory.Exists(path))
                 {
                     Directory.CreateDirectory(path);
                 }

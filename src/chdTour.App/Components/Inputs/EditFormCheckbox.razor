@@ -1,0 +1,20 @@
+﻿@using System.Globalization
+@using chdTour.App.Components.Base
+@using chdTour.DataAccess.Contracts.Interfaces.Repositories.Base
+@typeparam TRepo where TRepo :IBaseRepository<T>
+@typeparam T where T : class
+@inherits BaseEditFormInput<TRepo, T, bool>
+
+<EditFormInput Title="@this.Title">
+    @if (this._val)
+    {
+        <input type="checkbox" checked value="true" @onchange="(ChangeEventArgs args) => this.ValueChanged((bool)args.Value)" disabled="@this.Disabled" />
+    }
+    else
+    {
+        <input type="checkbox" value="false" @onchange="(ChangeEventArgs args) => this.ValueChanged((bool)args.Value)" disabled="@this.Disabled" />
+    }
+</EditFormInput>
+@code {
+    private bool _val => this.GetValue();
+}

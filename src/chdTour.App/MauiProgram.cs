@@ -4,6 +4,7 @@ using chdTour.Contracts.Constants;
 using chdTour.Contracts.Settings;
 using chdTour.Persistence.EF;
 using CommunityToolkit.Maui;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using System.Reflection;
@@ -31,7 +32,7 @@ namespace chdTour.App
             var app =  builder.Build();
 
 
-            app.Services.GetService<chdTourContext>().Database.EnsureCreated();
+            app.Services.GetService<chdTourContext>().Database.Migrate();
 
             return app;
         }

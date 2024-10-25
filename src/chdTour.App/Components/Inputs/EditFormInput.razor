@@ -1,0 +1,11 @@
+﻿@if (this.Title is not null)
+{
+    <div class="edit-form-title @(this.AlignTitleStart ? "align-title-start" : string.Empty)">@this.Title:</div>
+}
+<div class="edit-form-input">@this.ChildContent</div>
+
+@code {
+    [Parameter] public string? Title { get; set; } = null;
+    [Parameter] public bool AlignTitleStart { get; set; } = false;
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+}

@@ -11,14 +11,11 @@ using System.Threading.Tasks;
 
 namespace chdTour.DataAccess.Repositories
 {
-    public class PersonRepository : BaseEntityRepository<Person, Guid>, IPersonRepository
+    public class PersonRepository : BaseRepository<Person>, IPersonRepository
     {
         public PersonRepository(chdTourContext chdTourContext) : base(chdTourContext)
         {
         }
-
-        public override async Task<IEnumerable<Person>> GetAllAsync(CancellationToken cancellationToken = default)
-        => await this._chdTourContext.Persons.ToListAsync(cancellationToken);
 
     }
 }

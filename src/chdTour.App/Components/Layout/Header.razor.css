@@ -1,0 +1,25 @@
+﻿
+.header-panel {
+    width: 100%;
+}
+
+    .header-panel ::deep .ui-header {
+        width: 100%;
+    }
+
+        .header-panel ::deep .ui-header .pageTitle {
+        }
+
+        .header-panel ::deep .ui-header > .right-content {
+            display: none !important;
+            
+        }
+
+@media(min-width: 768px) {
+    .header-panel ::deep .ui-header .pageTitle {
+    }
+
+    .header-panel ::deep .ui-header > .right-content {
+        display: none;
+    }
+}

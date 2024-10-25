@@ -1,4 +1,5 @@
 ﻿using chdTour.DataAccess.Contracts.Domain;
+using chdTour.DataAccess.Contracts.Domain.Base;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
@@ -16,8 +17,44 @@ namespace chdTour.Persistence.EF
         public DbSet<GradeScala> GradeScalas { get; set; }
         public DbSet<TourPartner> TourPartners { get; set; }
 
+        public chdTourContext()
+        {
+
+        }
+
         public chdTourContext(DbContextOptions<chdTourContext> options) : base(options)
         {
+        }
+
+        public override int SaveChanges(bool acceptAllChangesOnSuccess)
+        {
+            this.HandleChangeTrack();
+            return base.SaveChanges(acceptAllChangesOnSuccess);
+        }
+        public override Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess, CancellationToken cancellationToken = default)
+        {
+            this.HandleChangeTrack();
+            return base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);
+        }
+
+        private void HandleChangeTrack()
+        {
+            var time = DateTime.Now;
+            foreach (var change in this.ChangeTracker.Entries().Where(x => x.State == EntityState.Added))
+            {
+                var createdDateTime = change.CurrentValues.EntityType.FindProperty(nameof(BaseEntity<Guid>.Created));
+
+                createdDateTime?.FieldInfo?.SetValue(change.Entity, time);
+            }
+        }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseSqlite($"Data Source=chdTour.db");
+            }
+            base.OnConfiguring(optionsBuilder);
         }
 
 

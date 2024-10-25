@@ -1,0 +1,31 @@
+@using chdTour.DataAccess.Contracts.Interfaces.Repositories.Base
+@typeparam TRepo where TRepo : IBaseRepository<T>
+@typeparam T where T : class
+
+<div class="entity-table">
+    @if (this._isItemVisible)
+    {
+        <div class="entity-content">
+            @ChildContent
+        </div>
+    }
+    <div class="search @(this._isItemVisible  ? " hide " :"")">
+        <div class="filter"></div>
+        <div class="buttons">
+            <IconButton FAClass="plus" OnClick="this.CreateEntity">@this.EntityName hinzufügen</IconButton>
+        </div>
+        <div class="result">
+            <Table Items="this.Items">
+                <HeaderContent>
+                    @HeaderContent
+                </HeaderContent>
+                <RowTemplate Context="entity">
+                    <div @onclick="async x => await this.OnEdit.InvokeAsync(entity)">
+                        @RowTemplate(entity)
+                    </div>
+                </RowTemplate>
+            </Table>
+
+        </div>
+    </div>
+</div>
