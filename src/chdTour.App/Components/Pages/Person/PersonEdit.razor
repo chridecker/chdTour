@@ -1,0 +1,11 @@
+@using Microsoft.EntityFrameworkCore
+@using chdTour.App.Components.Base
+@using chdTour.App.Components.Inputs
+@using chdTour.DataAccess.Contracts.Domain
+@inherits BaseEditForm<IPersonRepository,Person>
+
+<EditFormLayout TRepo="IPersonRepository" T="Person" @ref="this._layout" Value="this.Value" OnBack="this.OnBack">
+    <EditFormText TRepo="IPersonRepository" T="Person" Value="this.Value" Property="x => x.FirstName" Title="Vorname" />
+    <EditFormText TRepo="IPersonRepository" T="Person" Value="this.Value" Property="x => x.LastName" Title="Nachname" />
+</EditFormLayout>
+

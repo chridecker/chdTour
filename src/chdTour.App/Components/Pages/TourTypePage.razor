@@ -1,0 +1,24 @@
+@page "/tourtype"
+@using chdTour.App.Components.Base
+@using chdTour.App.Components.Pages.Person
+@using chdTour.App.Components.Pages.Scala
+@using chdTour.App.Components.Pages.TourTypes
+@using chdTour.DataAccess.Contracts.Domain
+
+@inherits BaseSearchForm<ITourTypeRepository, TourType>
+
+
+<EntityTable EntityName="Kategorien" T="TourType"
+             TRepo="ITourTypeRepository" Item="this._item" Items="this._items" OnEdit="async x => await this.SetEntity(x)">
+    <ChildContent>
+        <TourTypeEdit Token="this._cts.Token" OnBack="this.OnBack" Value="this._item" />
+    </ChildContent>
+    <HeaderContent>
+        <TableHead>Title</TableHead>
+        <TableHead>Skala</TableHead>
+    </HeaderContent>
+    <RowTemplate Context="entity">
+        <TableData>@entity.Title</TableData>
+        <TableData>@entity.GradeScala?.Title</TableData>
+    </RowTemplate>
+</EntityTable>
