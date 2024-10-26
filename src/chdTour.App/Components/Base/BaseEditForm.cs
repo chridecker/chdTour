@@ -12,6 +12,7 @@ namespace chdTour.App.Components.Base
         [Inject] protected TRepo _repository { get; set; }
         [Inject] protected IModalService _modal { get; set; }
 
+        [Parameter] public CancellationToken Token{ get; set; }
         [Parameter] public T Value { get; set; }
         [Parameter] public EventCallback OnBack { get; set; }
 

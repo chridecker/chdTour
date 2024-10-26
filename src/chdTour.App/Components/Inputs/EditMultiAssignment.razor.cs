@@ -36,13 +36,21 @@ namespace chdTour.App.Components.Inputs
                 entity.Id = Guid.NewGuid();
             }
             this._propertyInfoOneAssign.SetValue(newEntity, this.ParentEntity);
-            this._propertyInfoOneIdAssign.SetValue(newEntity, this.ParentEntity.Id);
             if (await this.OpenModal(newEntity))
             {
                 await this.ValueChanged(newEntity, EntityState.Added);
             }
         }
 
+        protected override async Task ValueChanged(T? value, EntityState state)
+        {
+            await this.OnChange?.Invoke(value, state);
+            if (state == EntityState.Added)
+            {
+                await this._repo.SaveAsync(value, this.Token);
+            }
+            await base.ValueChanged(value, state);
+        }
 
         private async Task<bool> OpenModal(T entity)
         {

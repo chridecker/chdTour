@@ -8,13 +8,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace chdTour.App.Components.Pages
 {
-    public partial class ScalaPage : BaseSearchForm<IGradeScalaRepository, GradeScala>
+    public partial class GradePage : BaseSearchForm<IGradeRepository, Grade>
     {
         protected override async Task OnInitializedAsync()
         {
-            this.Title = PageTitleConstants.Skala;
+            this.Title = PageTitleConstants.SkalaGrades;
 
-            this._items = await this._repository.Where(x => true).Include(i => i.Grades).ToListAsync(this._cts.Token);
+            this._items = await this._repository.Where(x => true).Include(i => i.GradeScala).ToListAsync(this._cts.Token);
 
             await base.OnInitializedAsync();
         }

@@ -26,6 +26,7 @@ namespace chdTour.App.Components.Base
 
         [Parameter] public string? Title { get; set; }
         [Parameter] public CancellationToken Token { get; set; }
+        [Parameter] public Func<T, EntityState, Task> OnChange { get; set; }
 
         protected ICollection<T> _entities => (ICollection<T>?)this._propertyInfoCollection.GetValue(this.ParentEntity);
         protected PropertyInfo _propertyInfoOneAssign;
@@ -38,10 +39,8 @@ namespace chdTour.App.Components.Base
         {
             var memberExpressionCollection = this.CollectionProperty.Body as MemberExpression ?? throw new ArgumentException("The expression is not a member access expression.", nameof(this.CollectionProperty));
             var memberExpression = this.OneAssignedProperty.Body as MemberExpression ?? throw new ArgumentException("The expression is not a member access expression.", nameof(this.OneAssignedProperty));
-            var memberIdExpression = this.OneAssignedPropertyId.Body as MemberExpression ?? throw new ArgumentException("The expression is not a member access expression.", nameof(this.OneAssignedProperty));
             this._propertyInfoCollection = memberExpressionCollection.Member as PropertyInfo ?? throw new ArgumentException("The member access expression does not access a property.", nameof(this.CollectionProperty));
             this._propertyInfoOneAssign = memberExpression.Member as PropertyInfo ?? throw new ArgumentException("The member access expression does not access a property.", nameof(this.OneAssignedProperty));
-            this._propertyInfoOneIdAssign = memberExpression.Member as PropertyInfo ?? throw new ArgumentException("The member access expression does not access a property.", nameof(this.OneAssignedProperty));
 
             if (!typeof(TParent).IsAssignableTo(this._propertyInfoOneAssign.PropertyType))
             {
@@ -51,25 +50,22 @@ namespace chdTour.App.Components.Base
         }
 
 
-        protected async Task ValueChanged(T? value, EntityState state)
+        protected virtual async  Task ValueChanged(T? value, EntityState state)
         {
-            switch (state)
-            {
-                case EntityState.Deleted:
-                    this._entities.Remove(value);
-                    await this._parentRepository.SaveAsync(this.ParentEntity, this.Token);
-                    break;
-                case EntityState.Added:
-                    if (!this._entities.Contains(value))
-                    {
-                        this._entities.Add(value);
-                        await this._parentRepository.SaveAsync(this.ParentEntity, this.Token);
-                    }
-                    break;
-                default:
-                    break;
-            }
-
+            //switch (state)
+            //{
+            //    case EntityState.Deleted:
+            //        this._entities.Remove(value);
+            //        break;
+            //    case EntityState.Added:
+            //        if (!this._entities.Contains(value))
+            //        {
+            //            this._entities.Add(value);
+            //        }
+            //        break;
+            //    default:
+            //        break;
+            //}
             await this._parentLayout.InvokeStateChange();
         }
     }
