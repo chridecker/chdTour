@@ -18,11 +18,13 @@
             <Table Items="this.Items">
                 <HeaderContent>
                     @HeaderContent
+                    <TableHead></TableHead>
                 </HeaderContent>
                 <RowTemplate Context="entity">
-                    <div @onclick="async x => await this.OnEdit.InvokeAsync(entity)">
-                        @RowTemplate(entity)
-                    </div>
+                    @RowTemplate(entity)
+                    <TableData>
+                        <IconButton FAClass="open" OnClick="async x => await this.OnEdit.InvokeAsync(entity)" />
+                    </TableData>
                 </RowTemplate>
             </Table>
 
