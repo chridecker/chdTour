@@ -5,7 +5,7 @@ using System.Text;
 
 namespace chdTour.DataAccess.Contracts.Domain
 {
-    public class TourPartner
+    public class TourPartner : BaseEntity<Guid>
     {
         public Guid TourId { get; set; }
         public Guid PartnerId { get; set; }

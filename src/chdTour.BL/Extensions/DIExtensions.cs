@@ -35,6 +35,7 @@ namespace chdTour.BL.Extensions
             services.AddScoped<ITourTypeRepository, TourTypeRepository>();
             services.AddScoped<IGradeRepository, GradeRepository>();
             services.AddScoped<IGradeScalaRepository, GradeScalaRepository>();
+            services.AddScoped<ITourPartnerRepository, TourPartnerRepository>();
 
             return services;
         }

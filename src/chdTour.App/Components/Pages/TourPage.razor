@@ -1,0 +1,30 @@
+@page "/tour"
+@using chdTour.App.Components.Base
+@using chdTour.App.Components.Pages.Scala
+@using chdTour.App.Components.Pages.Tours
+@using chdTour.DataAccess.Contracts.Domain
+
+@inherits BaseSearchForm<ITourRepository, Tour>
+
+<EntityTable EntityName="Touren" T="Tour"
+             TRepo="ITourRepository" Item="this._item" Items="this._items" OnEdit="async x => await this.SetEntity(x)">
+    <ChildContent>
+        <TourEdit Token="this._cts.Token" OnBack="this.OnBack" Value="this._item" />
+    </ChildContent>
+    <HeaderContent>
+        <TableHead>Title</TableHead>
+        <TableHead>Ort</TableHead>
+        <TableHead>Datum</TableHead>
+        <TableHead>Type</TableHead>
+        <TableHead>Grad</TableHead>
+        <TableHead>Partner</TableHead>
+    </HeaderContent>
+    <RowTemplate Context="entity">
+        <TableData>@entity.Title</TableData>
+        <TableData>@entity.Location</TableData>
+        <TableData>@entity.TourDate.ToString("dd.MM.yyyy")</TableData>
+        <TableData>@entity.TourType.Title</TableData>
+        <TableData>@entity.Grade.Title</TableData>
+        <TableData>@(string.Join(",",entity.TourPartners.SelectMany(s => s.PersonObj.FullName)))</TableData>
+    </RowTemplate>
+</EntityTable>

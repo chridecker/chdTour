@@ -64,14 +64,37 @@ namespace chdTour.Persistence.EF
             {
                 build.HasMany(x => x.TourPartners).WithOne(x => x.TourObj).HasForeignKey(x => x.TourId);
                 build.HasOne(x => x.TourType).WithMany(x => x.Tours).HasForeignKey(x => x.TourTypeId);
+                build.HasOne(x => x.Grade).WithMany().HasForeignKey(x => x.GradeId);
+
+                build.Navigation(x => x.Grade).AutoInclude();
+                build.Navigation(x => x.TourType).AutoInclude();
+                build.Navigation(x => x.TourPartners).AutoInclude();
             });
 
-            modelBuilder.Entity<TourType>().HasOne(x => x.GradeScala).WithMany().HasForeignKey(x => x.GradeScalaId);
-            modelBuilder.Entity<GradeScala>().HasMany(x => x.Grades).WithOne(x => x.GradeScala).HasForeignKey(x => x.GradeScalaId);
+            modelBuilder.Entity<TourType>(builder =>
+            {
+                builder.HasOne(x => x.GradeScala).WithMany().HasForeignKey(x => x.GradeScalaId);
+                builder.Navigation(x => x.GradeScala).AutoInclude();
+            });
+            modelBuilder.Entity<GradeScala>(builder =>
+            {
+                builder.HasMany(x => x.Grades).WithOne(x => x.GradeScala).HasForeignKey(x => x.GradeScalaId);
+                builder.Navigation(x => x.Grades).AutoInclude();
+            });
 
-            modelBuilder.Entity<TourPartner>().HasKey(x => new { x.TourId, x.PartnerId });
+            modelBuilder.Entity<TourPartner>(builder =>
+            {
+                builder.HasOne(x => x.TourObj).WithMany(x => x.TourPartners).HasForeignKey(x => x.TourId);
+                builder.HasOne(x => x.PersonObj).WithMany(x => x.TourPartners).HasForeignKey(x => x.PartnerId);
 
-            modelBuilder.Entity<Person>().HasMany(x => x.TourPartners).WithOne(x => x.PersonObj).HasForeignKey(x => x.PartnerId);
+                builder.Navigation(x => x.TourObj).AutoInclude();
+                builder.Navigation(x => x.PersonObj).AutoInclude();
+            });
+
+            modelBuilder.Entity<Person>(builder =>
+            {
+                builder.HasMany(x => x.TourPartners).WithOne(x => x.PersonObj).HasForeignKey(x => x.PartnerId);
+            });
 
             base.OnModelCreating(modelBuilder);
         }

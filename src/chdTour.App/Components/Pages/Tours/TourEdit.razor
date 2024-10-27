@@ -1,0 +1,75 @@
+@using Microsoft.EntityFrameworkCore
+@using chdTour.App.Components.Base
+@using chdTour.App.Components.Inputs
+@using chdTour.DataAccess.Contracts.Domain
+@inject ITourTypeRepository tourTypeRepo
+@inject ITourPartnerRepository tourPartnerRepo
+@inherits BaseEditForm<ITourRepository,Tour>
+
+<EditFormLayout TRepo="ITourRepository" T="Tour" @ref="this._layout" Value="this.Value" OnBack="this.OnBack">
+    <EditFormText TRepo="ITourRepository" T="Tour" Value="this.Value" Property="x => x.Title" Title="Titel" />
+    <EditFormText TRepo="ITourRepository" T="Tour" Value="this.Value" Property="x => x.Location" Title="Ort/Gebiet" />
+    <EditFormDateTime TRepo="ITourRepository" TValue="DateTime" T="Tour" Value="this.Value" Property="x => x.TourDate" Title="Datum" />
+    <EditFormNumber TValue="int" TRepo="ITourRepository" T="Tour" Value="this.Value" Property="x => x.Pitches" Title="SL" />
+
+    <EditFormSearch TRepo="ITourRepository" T="Tour" TValue="TourType" TFavoriteObject="Guid"
+                    Name="x => x?.Title" Property="x => x.TourType" Title="Typ" Value="this.Value" Values="this._tourTypeLst"
+                    OnChange="this.Changed" />
+
+    <EditFormSearch TRepo="ITourRepository" T="Tour" TValue="Grade" TFavoriteObject="Guid"
+                    Name="x => x?.Title" Property="x => x.Grade" Title="Grad" Value="this.Value" Values="_grades"
+                    OnChange="this.Changed" />
+
+    <EditMultiAssignment Title="Partner" TRepo="ITourPartnerRepository" TParentRepo="ITourRepository" T="TourPartner" Token="this.Token"
+                         TParent="Tour"
+                         TForm="TourPartnerEdit"
+                         OneAssignedProperty="x => x.TourObj"
+                         OnChange="this.Changed"
+                         ParentEntity="this.Value" CollectionProperty="x => x.TourPartners">
+        <HeaderContent>
+            <TableHead>Name</TableHead>
+        </HeaderContent>
+        <RowTemplate Context="tourPartner">
+            <TableData>@tourPartner.PersonObj.FullName</TableData>
+        </RowTemplate>
+    </EditMultiAssignment>
+
+    <EditFormTextArea TRepo="ITourRepository" T="Tour" Value="this.Value" Property="x => x.Comment" Title="Details" />
+    <EditFormTextArea TRepo="ITourRepository" T="Tour" Value="this.Value" Property="x => x.Description" Title="weiete Beschreibung" />
+</EditFormLayout>
+
+
+
+@code {
+    List<TourType> _tourTypeLst;
+    List<Grade> _grades = [];
+
+    protected async override Task OnInitializedAsync()
+    {
+        this._tourTypeLst = (await this.tourTypeRepo.FindAll(this.Token)).ToList();
+        if (this.Value.TourType?.GradeScala is not null)
+        {
+            this._grades = this.Value.TourType.GradeScala.Grades.ToList();
+        }
+        await base.OnInitializedAsync();
+    }
+
+    private void Changed(TourType type)
+    {
+        this.Value.TourTypeId = type.Id;
+        if (this.Value.TourType?.GradeScala is not null)
+        {
+            this._grades = this.Value.TourType.GradeScala.Grades.ToList();
+        }
+    }
+    private void Changed(Grade grade)
+    {
+        this.Value.GradeId = grade.Id;
+    }
+
+    private async Task Changed(TourPartner tourPartner, EntityState state)
+    {
+        tourPartner.TourId = this.Value.Id;
+    }
+
+}

@@ -7,6 +7,8 @@ namespace chdTour.DataAccess.Contracts.Domain
 {
     public class Person : BaseEntity<Guid>
     {
+        public string FullName => $"{this.FirstName} {this.LastName}";
+
         public string LastName { get; set; }
         public string FirstName { get; set; }
 

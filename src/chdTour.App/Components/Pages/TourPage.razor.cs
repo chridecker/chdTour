@@ -8,11 +8,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace chdTour.App.Components.Pages
 {
-    public partial class PersonPage : BaseSearchForm<IPersonRepository, DataAccess.Contracts.Domain.Person>
+    public partial class TourPage : BaseSearchForm<ITourRepository, Tour>
     {
         protected override async Task OnInitializedAsync()
         {
-            this.Title = PageTitleConstants.Persons;
+            this.Title = PageTitleConstants.Tours;
 
             this._items = await this._repository.Where(x => true).AsSplitQuery().ToListAsync(this._cts.Token);
 

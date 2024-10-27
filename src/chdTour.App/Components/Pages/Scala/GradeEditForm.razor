@@ -6,16 +6,9 @@
 
 <EditFormLayout TRepo="IGradeRepository" T="Grade" @ref="this._layout" Value="this.Value">
     <EditFormText TRepo="IGradeRepository" T="Grade" Title="Titel" Property="x => x.Title" Value="this.Value" />
-    @if (this.Value.GradeScala is not null &&  (this._scalaLst?.Any() ?? false))
-    {
-        <EditFormSearch TRepo="IGradeRepository" T="Grade" TValue="GradeScala" TFavoriteObject="Guid"
-                        Name="x => x?.Title" Property="x => x.GradeScala" Title="Skala" Value="this.Value" Values="this._scalaLst"
-        OnChange="this.Changed" />
-    }
-    else
-    {
-        <EditFormLabel Title="Skala" T="GradeScala" TRepo="IGradeScalaRepository" Value="this.Value.GradeScala" Property="x => x.Title" />
-    }
+    <EditFormSearch TRepo="IGradeRepository" T="Grade" TValue="GradeScala" TFavoriteObject="Guid"
+                    Name="x => x?.Title" Property="x => x.GradeScala" Title="Skala" Value="this.Value" Values="this._scalaLst"
+                    OnChange="this.Changed" />
 </EditFormLayout>
 
 
