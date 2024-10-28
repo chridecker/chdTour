@@ -17,7 +17,7 @@
         <EditFormLabel TRepo="ITourPartnerRepository" T="TourPartner" Title="Tour" Value="this.Value" Property="x => x.TourObj.Title" />
     }
 
-    @if (this.Value.PersonObj is null)
+    @*@if (this.Value.PersonObj is null)
     {
         <EditFormSearch TRepo="ITourPartnerRepository" T="TourPartner" TValue="Person" TFavoriteObject="Guid"
                         Name="x =>x.FullName" Property="x => x.PersonObj" Title="Partner" Value="this.Value" Values="this._personLst"
@@ -26,7 +26,7 @@
     else
     {
         <EditFormLabel TRepo="ITourPartnerRepository" T="TourPartner" Title="Partner" Value="this.Value" Property=" x => x.PersonObj.FullName" />
-    }
+    } *@
 
 </EditFormLayout>
 
