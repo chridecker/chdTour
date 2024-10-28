@@ -10,7 +10,7 @@ namespace chdTour.App.Implementations
     {
         public string ContentType { get; set; }
 
-        public async Task<Stream> PickFile(CancellationToken cancellationToken)
+        public async Task<byte[]> PickFile(CancellationToken cancellationToken)
         {
             var file = await FilePicker.Default.PickAsync(new PickOptions
             {
@@ -21,18 +21,23 @@ namespace chdTour.App.Implementations
                 }),
                 PickerTitle = "Datei-Auswahl"
             });
-            if (file is null) { return Stream.Null; }
+            if (file is null) { return []; }
             this.ContentType = file.ContentType;
+            byte[] buffer = new byte[16 * 1024];
             using var ms = new MemoryStream();
             using var fileStream = await file.OpenReadAsync();
-            await fileStream.CopyToAsync(ms, cancellationToken);
-            return ms;
+            int read;
+            while ((read = await fileStream.ReadAsync(buffer, 0, buffer.Length)) > 0)
+            {
+                ms.Write(buffer, 0, read);
+            }
+            return ms.ToArray();
         }
     }
     public interface ICustomFilePicker
     {
         string ContentType { get; }
 
-        Task<Stream> PickFile(CancellationToken cancellationToken);
+        Task<byte[]> PickFile(CancellationToken cancellationToken);
     }
 }
