@@ -6,6 +6,8 @@ using Android;
 using AndroidX.Activity;
 using Android.Content.PM;
 using Android.App;
+using Android.Provider;
+using Android.Content;
 
 namespace chdTour.App.Platforms.Android
 {
@@ -79,6 +81,11 @@ namespace chdTour.App.Platforms.Android
                     request.Grant(grantedResources.ToArray());
                 }
             });
+        }
+
+        public override bool OnShowFileChooser(global::Android.Webkit.WebView? webView, IValueCallback? filePathCallback, FileChooserParams? fileChooserParams)
+        {
+            return base.OnShowFileChooser(webView, filePathCallback, fileChooserParams);
         }
 
         private void RequestAllResources(Memory<string> requestedResources, Action<List<string>> callback)
