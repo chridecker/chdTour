@@ -1,9 +1,12 @@
 ﻿#if ANDROID
+using Android.Webkit;
 using AndroidX.Activity;
+using Bumptech.Glide.Load.Engine;
 using chdTour.App.Platforms.Android;
 #endif
 using Microsoft.AspNetCore.Components.WebView;
 using Microsoft.Maui.Platform;
+using System.Text.RegularExpressions;
 
 namespace chdTour.App
 {
@@ -40,7 +43,6 @@ namespace chdTour.App
 
         private partial void BlazorWebViewInitialized(object? sender, BlazorWebViewInitializedEventArgs e)
         {
-        
         }
 #endif
 
@@ -56,13 +58,9 @@ namespace chdTour.App
         private partial void BlazorWebViewInitializing(object? sender, BlazorWebViewInitializingEventArgs e)
         {
         }
-
         private async Task CheckPermissions()
         {
-
-#if ANDROID
             PermissionStatus statusNotification = await Permissions.RequestAsync<PermissionValidator>();
-#endif
         }
 
 
@@ -70,6 +68,8 @@ namespace chdTour.App
         {
             try
             {
+                e.WebView.Download += this.WebView_DownloadAsync;
+
                 if (e.WebView.Context?.GetActivity() is not ComponentActivity activity)
                 {
                     throw new InvalidOperationException($"The permission-managing WebChromeClient requires that the current activity be a '{nameof(ComponentActivity)}'.");
@@ -87,6 +87,49 @@ namespace chdTour.App
             }
 
         }
+
+        private async void WebView_DownloadAsync(object sender, DownloadEventArgs e)
+        {
+            Uri uri = new Uri(e.Url);
+            await DownloadAsync(uri, e.Mimetype);
+        }
+
+
+        public static string DataUrl2Filename(string base64encodedstring)
+        {
+            var filename = Regex.Match(base64encodedstring, @"data:text/(?<filename>.+?);(?<type2>.+?),(?<data>.+)").Groups["filename"].Value;
+            return filename;
+        }
+        public static byte[] DataUrl2Bytes(string base64encodedstring)
+        {
+            var base64Data = Regex.Match(base64encodedstring, @"data:text/(?<type>.+?),(?<data>.+)").Groups["data"].Value;
+            var bytes = Convert.FromBase64String(base64Data);
+            return bytes;
+        }
+
 #endif
+
+        private async Task DownloadAsync(Uri uri, string? mimeType = null)
+        {
+            var UploadPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "uploads");
+
+            string fileName = Path.GetFileName(uri.LocalPath);
+            var httpClient = new HttpClient();
+            var filePath = Path.Combine(UploadPath, fileName);
+#if ANDROID
+            if (uri.Scheme == "data")
+            {
+                fileName = DataUrl2Filename(uri.OriginalString);
+                filePath = Path.Combine(UploadPath, $"{DateTime.Now.ToString("yyyy-MM-dd-hhmmss")}-{fileName}");
+                var bytes = DataUrl2Bytes(uri.OriginalString);
+                File.WriteAllBytes(filePath, bytes);
+                await DisplayAlert("Download", $"Fertig {fileName}", "OK");
+                return;
+            }
+#endif
+            byte[] fileBytes = await httpClient.GetByteArrayAsync(uri);
+            File.WriteAllBytes(filePath, fileBytes);
+            await DisplayAlert("Download", $"Fertig {fileName}", "OK");
+        }
     }
 }

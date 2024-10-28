@@ -1,11 +1,14 @@
 @page "/settings"
+@using chdTour.App.Implementations
 @using chdTour.Contracts.Constants
+@using chdTour.Persistence.EF
 @inherits PageComponentBase<int,int>
-
+@inject IDownloadService downloader
 
 
 <ThemeModeButton />
 
+<IconButton FAClass="download" OnClick="this.DownloadDBFile">Save Database File</IconButton>>
 
 
 @code {
@@ -14,4 +17,18 @@
         this.Title = PageTitleConstants.Settings;
         return base.OnInitializedAsync();
     }
+
+    private async Task DownloadDBFile()
+    {
+        var file = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "chdTour", $"{nameof(chdTourContext)}.db");
+        var file2 = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "chdTour", $"{nameof(chdTourContext)}_bak.db");
+
+        File.Copy(file, file2, true);
+
+        using Stream fs = File.OpenRead(file2);
+        using MemoryStream ms = new MemoryStream();
+        await fs.CopyToAsync(ms);
+        await downloader.DownloadFileFromStream("db.db", ms.ToArray());
+    }
+
 }
