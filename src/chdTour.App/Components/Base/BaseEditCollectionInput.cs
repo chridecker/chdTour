@@ -20,7 +20,6 @@ namespace chdTour.App.Components.Base
         [Parameter] public Expression<Func<TParent, ICollection<T>>> CollectionProperty { get; set; }
 
         [Parameter] public Expression<Func<T, object>> OneAssignedProperty { get; set; }
-        [Parameter] public Expression<Func<T, object>> OneAssignedPropertyId { get; set; }
 
         [Parameter] public TParent ParentEntity { get; set; }
 
