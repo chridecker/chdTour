@@ -24,6 +24,8 @@ namespace chdTour.App.Extensions
 
             services.AddMauiModalHandler();
 
+            services.AddTransient<ICustomFilePicker, CustomFilePicker>();
+
             services.AddSingleton<IVibrationHelper, VibrationHelper>();
 
             services.AddSingleton<IAppInfoService, AppInfoService>();

@@ -1,13 +1,16 @@
+@using chd.UI.Base.Contracts.Enum
 @using chdTour.App.Components.Base
+@using chdTour.App.Implementations
 @using chdTour.DataAccess.Contracts.Domain.Base
 @using chdTour.DataAccess.Contracts.Interfaces.Repositories.Base
+@inject ICustomFilePicker filePicker
 @typeparam TRepo where TRepo : IBaseRepository<T>
 @typeparam T where T : BaseAttachmentEntity<Guid>
 @inherits BaseEditFormInput<TRepo, T, byte[]>
 
 <EditFormInput Title="@this.Title">
     <EditFormDisplayAttachment Attachment="this.Value" />
-    <InputFile OnChange="LoadFiles" />
+    <IconButton ButtonStyle="EButtonStyle.Secondary" FAClass="paperclip" OnClick="async ()=>await PickFile()">Datei auswählen</IconButton>
 </EditFormInput>
 
 @code {
@@ -16,18 +19,21 @@
     [Parameter] public EventCallback<string> TypeChanged { get; set; }
 
     [Parameter] public string Type { get; set; }
+    [Parameter] public CancellationToken Token { get; set; } = CancellationToken.None;
 
-    private async Task LoadFiles(InputFileChangeEventArgs e)
+    private async Task PickFile()
     {
+        var stream = await this.filePicker.PickFile(this.Token);
+        if (stream == Stream.Null) { return; }
 
-        if (!this.ValidateType(e.File.ContentType))
+        if (!this.ValidateType(filePicker.ContentType))
         {
             return;
         }
-        this.Type = e.File.ContentType;
+
+        this.Type = filePicker.ContentType;
         await this.TypeChanged.InvokeAsync(Type);
 
-        using var stream = e.File.OpenReadStream();
         byte[] buffer = new byte[16 * 1024];
         using var ms = new MemoryStream();
         int read;
