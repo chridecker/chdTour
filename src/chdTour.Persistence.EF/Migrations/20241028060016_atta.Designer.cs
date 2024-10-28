@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using chdTour.Persistence.EF;
 
@@ -10,9 +11,11 @@ using chdTour.Persistence.EF;
 namespace chdTour.Persistence.EF.Migrations
 {
     [DbContext(typeof(chdTourContext))]
-    partial class chdTourContextModelSnapshot : ModelSnapshot
+    [Migration("20241028060016_atta")]
+    partial class atta
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.10");

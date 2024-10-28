@@ -1,0 +1,19 @@
+@using chdTour.App.Components.Base
+@using chdTour.DataAccess.Contracts.Domain.Base
+@using chdTour.DataAccess.Contracts.Interfaces.Repositories.Base
+
+@if (this.Attachment.Data is not null && this._isImage)
+{
+    <img src="@Attachment.Url" />
+}
+else if (this.Attachment.Data is not null)
+{
+    <object data="@Attachment.Url" height="600" width="300"></object>
+}
+
+@code {
+    private bool _isImage => this.Attachment.Type.StartsWith("image");
+
+    [Parameter] public BaseAttachmentEntity<Guid> Attachment { get; set; }
+
+}

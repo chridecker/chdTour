@@ -22,7 +22,7 @@ namespace chdTour.BL.Extensions
             services.AddDbContext<chdTourContext>((sp, options) =>
             {
                 var path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "chdTour");
-               if (!Directory.Exists(path))
+                if (!Directory.Exists(path))
                 {
                     Directory.CreateDirectory(path);
                 }
@@ -36,6 +36,8 @@ namespace chdTour.BL.Extensions
             services.AddScoped<IGradeRepository, GradeRepository>();
             services.AddScoped<IGradeScalaRepository, GradeScalaRepository>();
             services.AddScoped<ITourPartnerRepository, TourPartnerRepository>();
+            services.AddScoped<ITourAttachementRepository, TourAttachementRepository>();
+            services.AddScoped<ITourImageRepository, TourImageRepository>();
 
             return services;
         }

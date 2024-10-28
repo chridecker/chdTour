@@ -18,5 +18,7 @@ namespace chdTour.DataAccess.Contracts.Domain
         public virtual TourType TourType { get; set; }
         public virtual Grade Grade { get; set; }
         public virtual ICollection<TourPartner> TourPartners { get; set; } = [];
+        public virtual ICollection<TourImage> Images { get; set; } = [];
+        public virtual ICollection<TourAttachement> Attachements { get; set; } = [];
     }
 }

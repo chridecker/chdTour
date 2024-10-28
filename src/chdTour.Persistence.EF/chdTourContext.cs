@@ -16,6 +16,8 @@ namespace chdTour.Persistence.EF
         public DbSet<TourType> TourTypes { get; set; }
         public DbSet<GradeScala> GradeScalas { get; set; }
         public DbSet<TourPartner> TourPartners { get; set; }
+        public DbSet<TourImage> TourImages { get; set; }
+        public DbSet<TourAttachement> TourAttachements { get; set; }
 
         public chdTourContext()
         {
@@ -62,6 +64,8 @@ namespace chdTour.Persistence.EF
         {
             modelBuilder.Entity<Tour>(build =>
             {
+                build.HasMany(x => x.Images).WithOne(x => x.Tour).HasForeignKey(x => x.TourId);
+                build.HasMany(x => x.Attachements).WithOne(x => x.Tour).HasForeignKey(x => x.TourId);
                 build.HasMany(x => x.TourPartners).WithOne(x => x.TourObj).HasForeignKey(x => x.TourId);
                 build.HasOne(x => x.TourType).WithMany(x => x.Tours).HasForeignKey(x => x.TourTypeId);
                 build.HasOne(x => x.Grade).WithMany().HasForeignKey(x => x.GradeId);
@@ -69,6 +73,16 @@ namespace chdTour.Persistence.EF
                 build.Navigation(x => x.Grade).AutoInclude();
                 build.Navigation(x => x.TourType).AutoInclude();
                 build.Navigation(x => x.TourPartners).AutoInclude();
+                build.Navigation(x => x.Attachements).AutoInclude();
+            });
+
+            modelBuilder.Entity<TourAttachement>(builder =>
+            {
+                builder.HasOne(x => x.Tour).WithMany(t => t.Attachements).HasForeignKey(x => x.TourId);
+            });
+            modelBuilder.Entity<TourImage>(builder =>
+            {
+                builder.HasOne(x => x.Tour).WithMany(t => t.Images).HasForeignKey(x => x.TourId);
             });
 
             modelBuilder.Entity<TourType>(builder =>
