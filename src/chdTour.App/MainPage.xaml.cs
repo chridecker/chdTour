@@ -22,7 +22,13 @@ namespace chdTour.App
                 // do something if error appears
             }
         }
-
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+#if ANDROID
+            await this.CheckPermissions();
+#endif
+        }
 
         private partial void BlazorWebViewInitializing(object? sender, BlazorWebViewInitializingEventArgs e);
         private partial void BlazorWebViewInitialized(object? sender, BlazorWebViewInitializedEventArgs e);
@@ -50,6 +56,15 @@ namespace chdTour.App
         private partial void BlazorWebViewInitializing(object? sender, BlazorWebViewInitializingEventArgs e)
         {
         }
+
+        private async Task CheckPermissions()
+        {
+
+#if ANDROID
+            PermissionStatus statusNotification = await Permissions.RequestAsync<PermissionValidator>();
+#endif
+        }
+
 
         private partial void BlazorWebViewInitialized(object? sender, BlazorWebViewInitializedEventArgs e)
         {
