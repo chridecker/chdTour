@@ -10,10 +10,6 @@
         </div>
     }
     <div class="search @(this._isItemVisible  ? " hide " :"")">
-        <div class="filter"></div>
-        <div class="buttons">
-            <IconButton FAClass="plus" OnClick="this.CreateEntity">@this.EntityName hinzufügen</IconButton>
-        </div>
         <div class="result">
             <Table Items="this.Items">
                 <HeaderContent>
@@ -29,5 +25,6 @@
             </Table>
 
         </div>
+        <FloatingActionNavigation FAIcon="plus" OnClick="this.CreateEntity" />
     </div>
 </div>

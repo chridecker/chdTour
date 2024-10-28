@@ -18,6 +18,7 @@ namespace chdTour.App.Components.Pages
 
             await base.OnInitializedAsync();
         }
-
+        protected override IQueryable<GradeScala> Include(IQueryable<GradeScala> queryable)
+            => queryable.Include(i => i.Grades);
     }
 }

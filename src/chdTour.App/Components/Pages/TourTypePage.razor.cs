@@ -13,9 +13,6 @@ namespace chdTour.App.Components.Pages
         protected override async Task OnInitializedAsync()
         {
             this.Title = PageTitleConstants.TourTypes;
-
-            this._items = await this._repository.Where(x => true).ToListAsync(this._cts.Token);
-
             await base.OnInitializedAsync();
         }
 

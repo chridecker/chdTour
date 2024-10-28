@@ -11,7 +11,7 @@
 <EntityTable EntityName="Kategorien" T="TourType"
              TRepo="ITourTypeRepository" Item="this._item" Items="this._items" OnEdit="async x => await this.SetEntity(x)">
     <ChildContent>
-        <TourTypeEdit Token="this._cts.Token" OnBack="this.OnBack" Value="this._item" />
+        <TourTypeEdit Token="this._cts.Token" OnBack="async ()=>await this.OnBack()" Value="this._item" />
     </ChildContent>
     <HeaderContent>
         <TableHead>Title</TableHead>

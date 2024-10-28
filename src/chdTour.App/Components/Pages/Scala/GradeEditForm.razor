@@ -6,12 +6,7 @@
 
 <EditFormLayout TRepo="IGradeRepository" T="Grade" @ref="this._layout" Value="this.Value">
     <EditFormText TRepo="IGradeRepository" T="Grade" Title="Titel" Property="x => x.Title" Value="this.Value" />
-    <EditFormSearch TRepo="IGradeRepository" T="Grade" TValue="GradeScala" TFavoriteObject="Guid"
-                    Name="x => x?.Title" Property="x => x.GradeScala" Title="Skala" Value="this.Value" Values="this._scalaLst"
-                    OnChange="this.Changed" />
 </EditFormLayout>
-
-
 @code {
     List<GradeScala> _scalaLst;
 

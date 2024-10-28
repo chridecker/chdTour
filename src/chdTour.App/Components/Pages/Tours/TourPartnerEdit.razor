@@ -6,28 +6,9 @@
 @inherits BaseEditForm<ITourPartnerRepository,TourPartner>
 
 <EditFormLayout TRepo="ITourPartnerRepository" T="TourPartner" @ref="this._layout" Value="this.Value">
-    @if (this.Value.TourObj is null)
-    {
-        <EditFormSearch TRepo="ITourPartnerRepository" T="TourPartner" TValue="Tour" TFavoriteObject="Guid"
-                        Name="x =>x.Title" Property="x => x.TourObj" Title="Tour" Value="this.Value" Values="this._tourLst"
-                        OnChange="this.Changed" />
-    }
-    else
-    {
-        <EditFormLabel TRepo="ITourPartnerRepository" T="TourPartner" Title="Tour" Value="this.Value" Property="x => x.TourObj.Title" />
-    }
-
-    @*@if (this.Value.PersonObj is null)
-    {
         <EditFormSearch TRepo="ITourPartnerRepository" T="TourPartner" TValue="Person" TFavoriteObject="Guid"
-                        Name="x =>x.FullName" Property="x => x.PersonObj" Title="Partner" Value="this.Value" Values="this._personLst"
+                        Name="x =>x?.FullName" Property="x => x.PersonObj" Title="Partner" Value="this.Value" Values="this._personLst"
                         OnChange="this.Changed" />
-    }
-    else
-    {
-        <EditFormLabel TRepo="ITourPartnerRepository" T="TourPartner" Title="Partner" Value="this.Value" Property=" x => x.PersonObj.FullName" />
-    } *@
-
 </EditFormLayout>
 
 

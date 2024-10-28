@@ -11,7 +11,7 @@ namespace chdTour.DataAccess.Contracts.Domain
         public string Location { get; set; }
         public string? Description { get; set; }
         public string? Comment { get; set; }
-        public DateTime TourDate { get; set; }
+        public DateTime TourDate { get; set; } = DateTime.Now;
         public int Pitches { get; set; }
         public Guid TourTypeId { get; set; }
         public Guid? GradeId { get; set; }

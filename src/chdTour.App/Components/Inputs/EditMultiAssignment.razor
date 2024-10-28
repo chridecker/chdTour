@@ -17,9 +17,11 @@
         <Table Items="this.Items">
             <HeaderContent>
                 @HeaderContent
+                <TableHead></TableHead>
             </HeaderContent>
             <RowTemplate Context="item">
                 @RowTemplate(item)
+                <TableData><IconButton FAClass="trash" OnClick="async () => await this.Delete(item)" /></TableData>
             </RowTemplate>
         </Table>
 

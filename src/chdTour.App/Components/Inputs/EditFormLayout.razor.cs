@@ -43,7 +43,7 @@ namespace chdTour.App.Components.Inputs
             }
             if (this.Modal is not null)
             {
-                await this.Modal.CloseAsync(ModalResult.Ok());
+                await this.Modal.CloseAsync();
                 return;
             }
             var modal = this._modal.ShowLoading();
@@ -59,12 +59,14 @@ namespace chdTour.App.Components.Inputs
             {
                 modal.Close();
             }
-
+            await this.Back();
 
         }
 
         private async Task Delete()
         {
+            if (await this._modal.ShowDialog("Löschen?", EDialogButtons.YesNo) == EDialogResult.No) { return; }
+
             var modal = this._modal.ShowLoading();
             try
             {
@@ -83,9 +85,6 @@ namespace chdTour.App.Components.Inputs
         public async Task InvokeStateChange() => await this.InvokeAsync(StateHasChanged);
 
 
-        private async Task Back()
-        {
-            await this.OnBack.InvokeAsync();
-        }
+        private Task Back() => this.OnBack.InvokeAsync();
     }
 }

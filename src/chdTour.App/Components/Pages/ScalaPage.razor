@@ -9,7 +9,7 @@
 <EntityTable EntityName="Skala" T="GradeScala"
              TRepo="IGradeScalaRepository" Item="this._item" Items="this._items" OnEdit="async x => await this.SetEntity(x)">
     <ChildContent>
-        <ScalaEdit Token="this._cts.Token" OnBack="this.OnBack" Value="this._item" />
+        <ScalaEdit Token="this._cts.Token" OnBack="async ()=>await this.OnBack()" Value="this._item" />
     </ChildContent>
     <HeaderContent>
         <TableHead>Title</TableHead>

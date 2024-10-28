@@ -1,0 +1,17 @@
+@page "/settings"
+@using chdTour.Contracts.Constants
+@inherits PageComponentBase<int,int>
+
+
+
+<ThemeModeButton />
+
+
+
+@code {
+    protected override Task OnInitializedAsync()
+    {
+        this.Title = PageTitleConstants.Settings;
+        return base.OnInitializedAsync();
+    }
+}

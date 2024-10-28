@@ -10,7 +10,7 @@
 <EntityTable EntityName="Partner" T="DataAccess.Contracts.Domain.Person"
              TRepo="IPersonRepository" Item="this._item" Items="this._items" OnEdit="async x => await this.SetEntity(x)">
     <ChildContent>
-        <PersonEdit Token="this._cts.Token" OnBack="this.OnBack" Value="this._item" />
+        <PersonEdit Token="this._cts.Token" OnBack="async ()=>await this.OnBack()" Value="this._item" />
     </ChildContent>
     <HeaderContent>
         <TableHead>Vorname</TableHead>

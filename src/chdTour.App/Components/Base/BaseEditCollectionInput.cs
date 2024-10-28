@@ -51,20 +51,6 @@ namespace chdTour.App.Components.Base
 
         protected virtual async  Task ValueChanged(T? value, EntityState state)
         {
-            //switch (state)
-            //{
-            //    case EntityState.Deleted:
-            //        this._entities.Remove(value);
-            //        break;
-            //    case EntityState.Added:
-            //        if (!this._entities.Contains(value))
-            //        {
-            //            this._entities.Add(value);
-            //        }
-            //        break;
-            //    default:
-            //        break;
-            //}
             await this._parentLayout.InvokeStateChange();
         }
     }

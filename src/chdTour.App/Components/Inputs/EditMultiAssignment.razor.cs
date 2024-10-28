@@ -38,7 +38,17 @@ namespace chdTour.App.Components.Inputs
             this._propertyInfoOneAssign.SetValue(newEntity, this.ParentEntity);
             if (await this.OpenModal(newEntity))
             {
+                this._entities.Add(newEntity);
                 await this.ValueChanged(newEntity, EntityState.Added);
+            }
+        }
+
+        public async Task Delete(T entity)
+        {
+            if (await this._modal.ShowDialog($"Eintrag Löschen?", EDialogButtons.YesNo) == EDialogResult.Yes)
+            {
+                await this._repo.DeleteAsync(entity, this.Token);
+                this._entities.Remove(entity);
             }
         }
 
