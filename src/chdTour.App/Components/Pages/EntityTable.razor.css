@@ -1,8 +1,32 @@
 ﻿.entity-table {
 }
 
+    .entity-table .entity-content {
+        padding-left:0.2rem;
+    }
+    
     .entity-table .search.hide {
         display: none;
     }
 
-   
+    .entity-table .search .result {
+    }
+
+        .entity-table .search .result ::deep .custom-table {
+        }
+
+            .entity-table .search .result ::deep .custom-table tbody {
+            }
+
+                .entity-table .search .result ::deep .custom-table tbody tr td {
+                }
+
+                    .entity-table .search .result ::deep .custom-table tbody tr td.custom-table-data {
+                        
+                    }
+
+                        .entity-table .search .result ::deep .custom-table tbody tr td.custom-table-data .btn {
+                        }
+                        .entity-table .search .result ::deep .custom-table tbody tr td.custom-table-data .btn svg {
+                            height: 0.8rem;
+                        }

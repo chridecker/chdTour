@@ -12,7 +12,7 @@
     --main-article-available-height: 100% !important;
     --chd-main-color-theme: var(--chd-lightblue);
     --chd-main-color-theme-transparent: var(--chd-lightblue-transparent);
-    --chd-main-color-theme-gradient: linear-gradient(to right, transparent 0%, var(--chd-main-color-theme-transparent) 10%, var(--chd-main-color-theme) 90%);
+    --chd-main-color-theme-gradient: linear-gradient(to right, transparent 0%, var(--chd-main-color-theme-tr ansparent) 10%, var(--chd-main-color-theme) 90%);
     --chd-main-color-theme-gradient-left: linear-gradient(to left, transparent 0%, var(--chd-main-color-theme-transparent) 10%, var(--chd-main-color-theme) 90%);
     --chd-main-color-theme-semi-transparent: var(--chd-lightblue-semi-transparent);
     --widget-height: 38rem !important;
@@ -28,6 +28,10 @@
 
 .side-widget-container .side-widget {
     top: calc(var(--top-header-height) * 2 + var(--child-index) * calc(var(--widget-button-total-size) + var(--widget-button-padding))) !important;
+}
+
+.custom-table{
+    font-size: 12pt;
 }
 
 .fab-navigation {
@@ -96,7 +100,6 @@
 
             .top-row .header-panel .ui-header .pageTitle {
                 display: flex !important;
-                font-size: 12pt;
             }
 
             .top-row .header-panel .ui-header .right-content {

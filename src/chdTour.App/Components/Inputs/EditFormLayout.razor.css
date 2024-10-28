@@ -5,7 +5,10 @@
 }
 
 
-    .edit-form .content {
+    .edit-form .edit-form-content {
+        display: grid;
+        grid-template: 1fr 1fr;
+        padding-right: 0.2rem;
     }
 
 

@@ -28,6 +28,9 @@ namespace chdTour.App
 
                 var mainWindow = base.CreateWindow(activationState);
 
+                mainWindow.Width = 370;
+                mainWindow.Height = 825;
+
                 mainWindow.Deactivated += (sender, args) => this._appInfoService.AppLifeCycleChanged?.Invoke(this, EAppLifeCycle.OnSleep);
                 mainWindow.Resumed += (sender, args) => this._appInfoService.AppLifeCycleChanged?.Invoke(this, EAppLifeCycle.OnResume);
 
