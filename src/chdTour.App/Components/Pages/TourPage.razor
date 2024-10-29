@@ -13,12 +13,10 @@
     </ChildContent>
     <HeaderContent>
         <TableHead>Title</TableHead>
-        <TableHead>Ort</TableHead>
         <TableHead>Datum</TableHead>
     </HeaderContent>
     <RowTemplate Context="entity">
         <TableData>@entity.Title</TableData>
-        <TableData>@entity.Location</TableData>
         <TableData>@entity.TourDate.ToString("dd.MM.yyyy")</TableData>
     </RowTemplate>
 </EntityTable>
