@@ -8,9 +8,7 @@
     <ContentPage.Behaviors>
         <toolkit:StatusBarBehavior StatusBarColor="{StaticResource CHDBg}" StatusBarStyle="LightContent" />
     </ContentPage.Behaviors>
-    <BlazorWebView androind:WebView.EnableZoomControls="true" 
-                   androind:WebView.DisplayZoomControls="true" 
-                   x:Name="blazorWebView" HostPage="wwwroot/index.html" BackgroundColor="{StaticResource CHDBg}">
+    <BlazorWebView x:Name="blazorWebView" HostPage="wwwroot/index.html" BackgroundColor="{StaticResource CHDBg}">
         <BlazorWebView.RootComponents>
             <RootComponent Selector="#app" ComponentType="{x:Type local:Components.Routes}" />
         </BlazorWebView.RootComponents>

@@ -68,6 +68,10 @@ namespace chdTour.App
         {
             try
             {
+
+                e.WebView.Settings.DisplayZoomControls = true;
+                e.WebView.Settings.BuiltInZoomControls = true;
+
                 e.WebView.Download += this.WebView_DownloadAsync;
 
                 if (e.WebView.Context?.GetActivity() is not ComponentActivity activity)
