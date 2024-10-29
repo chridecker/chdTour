@@ -64,10 +64,11 @@ namespace chdTour.App
         }
 
 
-        private partial void BlazorWebViewInitialized(object? sender, BlazorWebViewInitializedEventArgs e)
+        private async partial void BlazorWebViewInitialized(object? sender, BlazorWebViewInitializedEventArgs e)
         {
             try
             {
+                e.WebView.Settings.SetSupportZoom(true);
 
                 e.WebView.Settings.DisplayZoomControls = true;
                 e.WebView.Settings.BuiltInZoomControls = true;
@@ -85,9 +86,9 @@ namespace chdTour.App
                 var webChromeClient = new PermissionManagingBlazorWebChromeClient(e.WebView.WebChromeClient!, activity);
                 e.WebView.SetWebChromeClient(webChromeClient);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                // do something if error appears
+                await DisplayAlert("Fehler", ex.Message, "OK");
             }
 
         }
