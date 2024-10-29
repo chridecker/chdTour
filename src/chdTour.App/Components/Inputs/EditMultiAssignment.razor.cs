@@ -43,6 +43,14 @@ namespace chdTour.App.Components.Inputs
             }
         }
 
+        public async Task Edit(T entity)
+        {
+            if (await this.OpenModal(entity))
+            {
+                await this.ValueChanged(entity, EntityState.Added);
+            }
+        }
+
         public async Task Delete(T entity)
         {
             if (await this._modal.ShowDialog($"Eintrag Löschen?", EDialogButtons.YesNo) == EDialogResult.Yes)

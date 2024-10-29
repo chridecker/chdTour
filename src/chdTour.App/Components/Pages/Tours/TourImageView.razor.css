@@ -1,0 +1,6 @@
+﻿.tour-image-display {
+}
+
+    .tour-image-display ::deep img {
+        width: calc(var(--main-article-width));
+    }

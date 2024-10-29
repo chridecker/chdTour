@@ -1,0 +1,9 @@
+@using chdTour.App.Components.Inputs
+@using chdTour.DataAccess.Contracts.Domain.Base
+
+<div class="tour-image-display">
+    <EditFormDisplayAttachment Attachment="this.Attachment" />
+</div>
+@code {
+    [Parameter] public BaseAttachmentEntity<Guid> Attachment { get; set; }
+}

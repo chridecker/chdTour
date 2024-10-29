@@ -1,5 +1,6 @@
 ﻿@using chd.UI.Base.Components.General
 @using chd.UI.Base.Components.General.Table
+@using chd.UI.Base.Contracts.Enum
 @using chdTour.App.Components.Base
 @using chdTour.DataAccess.Contracts.Domain.Base
 @using chdTour.DataAccess.Contracts.Interfaces.Repositories.Base
@@ -18,10 +19,12 @@
             <HeaderContent>
                 @HeaderContent
                 <TableHead></TableHead>
+                <TableHead></TableHead>
             </HeaderContent>
             <RowTemplate Context="item">
                 @RowTemplate(item)
-                <TableData><IconButton FAClass="trash" OnClick="async () => await this.Delete(item)" /></TableData>
+                <TableData><IconButton FAClass="pen"  OnClick="async () => await this.Edit(item)" /></TableData>
+                <TableData><IconButton FAClass="trash" ButtonStyle="EButtonStyle.Cancel" OnClick="async () => await this.Delete(item)" /></TableData>
             </RowTemplate>
         </Table>
 

@@ -48,9 +48,11 @@
                          ParentEntity="this.Value" CollectionProperty="x => x.Images">
         <HeaderContent>
             <TableHead>Title</TableHead>
+            <TableHead></TableHead>
         </HeaderContent>
         <RowTemplate Context="att">
             <TableData>@att.Title</TableData>
+            <TableData><IconButton FAClass="eye" OnClick="async ()=> await this.ShowImage(att)" /></TableData>
         </RowTemplate>
     </EditMultiAssignment>
 
@@ -87,6 +89,20 @@
         await base.OnInitializedAsync();
     }
 
+    private async Task ShowImage(TourImage image)
+    {
+        var options = new ModalOptions
+            {
+                HideHeader = true,
+                OverlayCustomClass = "overly-tour-image-view",
+                Position = ModalPosition.Middle,
+                Size = ModalSize.ExtraLarge,
+            };
+        var param = new ModalParameters();
+        param.Add(nameof(TourImageView.Attachment), image);
+        await this._modal.Show<TourImageView>(param, options).Result;
+    }
+
     private void Changed(TourType type)
     {
         this.Value.TourTypeId = type.Id;
@@ -108,7 +124,7 @@
     {
         attachement.TourId = this.Value.Id;
     }
-    
+
     private async Task Changed(TourImage attachement, EntityState state)
     {
         attachement.TourId = this.Value.Id;
