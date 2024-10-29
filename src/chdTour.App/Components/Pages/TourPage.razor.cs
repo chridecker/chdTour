@@ -16,10 +16,7 @@ namespace chdTour.App.Components.Pages
             await base.OnInitializedAsync();
         }
         protected override IQueryable<Tour> Include(IQueryable<Tour> queryable)
-        {
-            queryable.Include(i => i.Images).Include(i => i.Attachements);
-            return queryable;
-        }
+        => queryable.Include(i => i.Images).Include(i => i.Attachements);
 
 
     }
