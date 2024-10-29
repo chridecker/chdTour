@@ -1,5 +1,11 @@
-﻿.edit-form-input:has(> input) {
-    width: 15rem;
+﻿
+.edit-form-input {
+    display:grid;
+    gap:0.2rem;
+}
+
+.edit-form-input:has(> input) {
+    width: 13rem;
 }
 
     .edit-form-input ::deep input:not([type=checkbox]) {

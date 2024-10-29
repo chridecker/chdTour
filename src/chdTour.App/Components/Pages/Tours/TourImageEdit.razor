@@ -3,11 +3,12 @@
 @using chdTour.DataAccess.Contracts.Domain
 @inherits BaseEditForm<ITourImageRepository,TourImage>
 
-<EditFormLayout TRepo="ITourImageRepository" T="TourImage" @ref="this._layout" Value="this.Value">
-    <EditFormText TRepo="ITourImageRepository" T="TourImage" Title="Titel" Property="x => x.Title" Value="this.Value" />
-    <EditFormImage TRepo="ITourImageRepository" T="TourImage" Title="Titel" Property="x => x.Data" Value="this.Value" @bind-Type="@this.Value.Type" />
-</EditFormLayout>
-
+<div class="edit-tour">
+    <EditFormLayout TRepo="ITourImageRepository" T="TourImage" @ref="this._layout" Value="this.Value">
+        <EditFormText TRepo="ITourImageRepository" T="TourImage" Title="Titel" Property="x => x.Title" Value="this.Value" />
+        <EditFormImage TRepo="ITourImageRepository" T="TourImage" Title="Titel" Property="x => x.Data" Value="this.Value" @bind-Type="@this.Value.Type" />
+    </EditFormLayout>
+</div>
 
 @code {
     protected async override Task OnInitializedAsync()

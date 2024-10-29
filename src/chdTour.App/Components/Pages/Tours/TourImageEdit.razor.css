@@ -1,0 +1,13 @@
+﻿.edit-tour {
+}
+
+    .edit-tour ::deep .edit-form {
+    }
+
+        .edit-tour ::deep .edit-form .edit-form-content {
+        }
+
+    .edit-tour ::deep img {
+        max-width: 8rem;
+        max-height: 15rem;
+    }
