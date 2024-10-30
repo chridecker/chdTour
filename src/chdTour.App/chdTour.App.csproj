@@ -101,7 +101,7 @@
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebView.Maui" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
 		<PackageReference Include="System.Linq.Async" Version="6.0.1" />
-		<PackageReference Include="chd.UI.Base.Components" Version="1.0.24302.87" />
+		<PackageReference Include="chd.UI.Base.Components" Version="1.0.24304.96" />
 		<PackageReference Include="CommunityToolkit.Maui" Version="9.1.0" />
 	</ItemGroup>
 

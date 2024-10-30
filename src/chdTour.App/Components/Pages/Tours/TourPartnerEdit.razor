@@ -1,12 +1,9 @@
-@using chdTour.App.Components.Base
-@using chdTour.App.Components.Inputs
-@using chdTour.DataAccess.Contracts.Domain
 @inject IPersonRepository personRepo
 @inject ITourRepository tourRepo
-@inherits BaseEditForm<ITourPartnerRepository,TourPartner>
+@inherits BaseEditForm<ITourPartnerRepository,TourPartner,Guid>
 
-<EditFormLayout TRepo="ITourPartnerRepository" T="TourPartner" @ref="this._layout" Value="this.Value">
-        <EditFormSearch TRepo="ITourPartnerRepository" T="TourPartner" TValue="Person" TFavoriteObject="Guid"
+<EditFormLayout TRepo="ITourPartnerRepository" T="TourPartner" PK="Guid" @ref="this._layout" Value="this.Value">
+    <EditFormSearch TRepo="ITourPartnerRepository" T="TourPartner" PK="Guid" TValue="Person" TFavoriteObject="Guid"
                         Name="x =>x?.FullName" Property="x => x.PersonObj" Title="Partner" Value="this.Value" Values="this._personLst"
                         OnChange="this.Changed" />
 </EditFormLayout>

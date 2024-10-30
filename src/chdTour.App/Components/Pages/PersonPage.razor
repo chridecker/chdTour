@@ -1,23 +1,14 @@
 @page "/person"
-@using chdTour.App.Components.Base
+@using chdTour.App.Components.Pages.Base
 @using chdTour.App.Components.Pages.Person
 @using chdTour.App.Components.Pages.Scala
 @using chdTour.DataAccess.Contracts.Domain
+@inherits BaseTourSerachForm<IPersonRepository, DataAccess.Contracts.Domain.Person>
 
-@inherits BaseSearchForm<IPersonRepository, DataAccess.Contracts.Domain.Person>
 
-
-<EntityTable EntityName="Partner" T="DataAccess.Contracts.Domain.Person"
-             TRepo="IPersonRepository" Item="this._item" Items="this._items" OnEdit="async x => await this.SetEntity(x)">
+<EntitySearch T="DataAccess.Contracts.Domain.Person" PK="Guid" TRepo="IPersonRepository" OnReload="this.Reload" Columns="this.Columns"
+              Item="this._item" Items="this._items" OnEdit="async x => await this.SetEntity(x)">
     <ChildContent>
         <PersonEdit Token="this._cts.Token" OnBack="async ()=>await this.OnBack()" Value="this._item" />
     </ChildContent>
-    <HeaderContent>
-        <TableHead>Vorname</TableHead>
-        <TableHead>Nachname</TableHead>
-    </HeaderContent>
-    <RowTemplate Context="entity">
-        <TableData>@entity.FirstName</TableData>
-        <TableData>@entity.LastName</TableData>
-    </RowTemplate>
-</EntityTable>
+</EntitySearch>

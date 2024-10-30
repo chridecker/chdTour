@@ -1,27 +1,24 @@
 @using Microsoft.EntityFrameworkCore
-@using chdTour.App.Components.Base
-@using chdTour.App.Components.Inputs
-@using chdTour.DataAccess.Contracts.Domain
 @inject ITourTypeRepository tourTypeRepo
 @inject ITourPartnerRepository tourPartnerRepo
 @inject ITourAttachementRepository tourAttachementRepo
-@inherits BaseEditForm<ITourRepository,Tour>
+@inherits BaseEditForm<ITourRepository,Tour,Guid>
 
-<EditFormLayout TRepo="ITourRepository" T="Tour" @ref="this._layout" Value="this.Value" OnBack="this.OnBack">
-    <EditFormText TRepo="ITourRepository" T="Tour" Value="this.Value" Property="x => x.Title" Title="Titel" />
-    <EditFormText TRepo="ITourRepository" T="Tour" Value="this.Value" Property="x => x.Location" Title="Ort/Gebiet" />
-    <EditFormDateTime TRepo="ITourRepository" TValue="DateTime" T="Tour" Value="this.Value" Property="x => x.TourDate" Title="Datum" />
-    <EditFormNumber TValue="int" TRepo="ITourRepository" T="Tour" Value="this.Value" Property="x => x.Pitches" Title="SL" />
+<EditFormLayout TRepo="ITourRepository" T="Tour" PK="Guid" @ref="this._layout" Value="this.Value" OnBack="this.OnBack">
+    <EditFormText TRepo="ITourRepository" T="Tour" PK="Guid" Value="this.Value" Property="x => x.Title" Title="Titel" />
+    <EditFormText TRepo="ITourRepository" T="Tour" PK="Guid" Value="this.Value" Property="x => x.Location" Title="Ort/Gebiet" />
+    <EditFormDateTime TRepo="ITourRepository" TValue="DateTime" T="Tour" PK="Guid" Value="this.Value" Property="x => x.TourDate" Title="Datum" />
+    <EditFormNumber TValue="int" TRepo="ITourRepository" T="Tour" PK="Guid" Value="this.Value" Property="x => x.Pitches" Title="SL" />
 
-    <EditFormSearch TRepo="ITourRepository" T="Tour" TValue="TourType" TFavoriteObject="Guid"
+    <EditFormSearch TRepo="ITourRepository" T="Tour" PK="Guid" TValue="TourType" TFavoriteObject="Guid"
                     Name="x => x?.Title" Property="x => x.TourType" Title="Typ" Value="this.Value" Values="this._tourTypeLst"
                     OnChange="this.Changed" />
 
-    <EditFormSearch TRepo="ITourRepository" T="Tour" TValue="Grade" TFavoriteObject="Guid"
+    <EditFormSearch TRepo="ITourRepository" T="Tour" PK="Guid" TValue="Grade" TFavoriteObject="Guid"
                     Name="x => x?.Title" Property="x => x.Grade" Title="Grad" Value="this.Value" Values="_grades"
                     OnChange="this.Changed" />
 
-    <EditMultiAssignment Title="Partner" TRepo="ITourPartnerRepository" TParentRepo="ITourRepository" T="TourPartner" Token="this.Token"
+    <EditMultiAssignment Title="Partner" TRepo="ITourPartnerRepository" PK="Guid" TParentRepo="ITourRepository" T="TourPartner" Token="this.Token"
                          TParent="Tour"
                          TForm="TourPartnerEdit"
                          OneAssignedProperty="x => x.TourObj"
@@ -36,10 +33,10 @@
         </RowTemplate>
     </EditMultiAssignment>
 
-    <EditFormTextArea TRepo="ITourRepository" T="Tour" Value="this.Value" Property="x => x.Comment" Title="Details" />
-    <EditFormTextArea TRepo="ITourRepository" T="Tour" Value="this.Value" Property="x => x.Description" Title="weitere Beschreibung" />
+    <EditFormTextArea TRepo="ITourRepository" T="Tour" PK="Guid" Value="this.Value" Property="x => x.Comment" Title="Details" />
+    <EditFormTextArea TRepo="ITourRepository" T="Tour" PK="Guid" Value="this.Value" Property="x => x.Description" Title="weitere Beschreibung" />
 
-    <EditMultiAssignment Title="Bild" TRepo="ITourImageRepository" TParentRepo="ITourRepository" T="TourImage" Token="this.Token"
+    <EditMultiAssignment Title="Bild" TRepo="ITourImageRepository" PK="Guid" TParentRepo="ITourRepository" T="TourImage" Token="this.Token"
                          TParent="Tour"
                          TForm="TourImageEdit"
                          OneAssignedProperty="x => x.Tour"
@@ -56,7 +53,7 @@
         </RowTemplate>
     </EditMultiAssignment>
 
-    <EditMultiAssignment Title="Anhang" TRepo="ITourAttachementRepository" TParentRepo="ITourRepository" T="TourAttachement" Token="this.Token"
+    <EditMultiAssignment Title="Anhang" PK="Guid" TRepo="ITourAttachementRepository" TParentRepo="ITourRepository" T="TourAttachement" Token="this.Token"
                          TParent="Tour"
                          TForm="TourAttachementEdit"
                          OneAssignedProperty="x => x.Tour"
@@ -116,16 +113,16 @@
         this.Value.GradeId = grade.Id;
     }
 
-    private async Task Changed(TourPartner tourPartner, EntityState state)
+    private async Task Changed(TourPartner tourPartner)
     {
         tourPartner.TourId = this.Value.Id;
     }
-    private async Task Changed(TourAttachement attachement, EntityState state)
+    private async Task Changed(TourAttachement attachement)
     {
         attachement.TourId = this.Value.Id;
     }
 
-    private async Task Changed(TourImage attachement, EntityState state)
+    private async Task Changed(TourImage attachement)
     {
         attachement.TourId = this.Value.Id;
     }

@@ -1,13 +1,11 @@
 @using Microsoft.EntityFrameworkCore
-@using chdTour.App.Components.Base
-@using chdTour.App.Components.Inputs
 @using chdTour.DataAccess.Contracts.Domain
-@inherits BaseEditForm<IGradeScalaRepository,GradeScala>
+@inherits BaseEditForm<IGradeScalaRepository,GradeScala,Guid>
 
 
-<EditFormLayout TRepo="IGradeScalaRepository" T="GradeScala" @ref="this._layout" Value="this.Value" OnBack="this.OnBack">
-    <EditFormText TRepo="IGradeScalaRepository" T="GradeScala" Value="this.Value" Property="x => x.Title" Title="Titel" />
-    <EditMultiAssignment Title="Grad" TRepo="IGradeRepository" TParentRepo="IGradeScalaRepository" T="Grade" Token="this.Token"
+<EditFormLayout TRepo="IGradeScalaRepository" T="GradeScala" PK="Guid" @ref="this._layout" Value="this.Value" OnBack="this.OnBack">
+    <EditFormText TRepo="IGradeScalaRepository" T="GradeScala" PK="Guid" Value="this.Value" Property="x => x.Title" Title="Titel" />
+    <EditMultiAssignment Title="Grad" TRepo="IGradeRepository" PK="Guid" TParentRepo="IGradeScalaRepository" T="Grade" Token="this.Token"
                          TParent="GradeScala"
                          TForm="GradeEditForm"
                          OneAssignedProperty="x => x.GradeScala"
@@ -24,11 +22,8 @@
 
 
 @code {
-    private async Task SetId(Grade grade, EntityState state)
+    private async Task SetId(Grade grade)
     {
-        if (state == EntityState.Added)
-        {
-            grade.GradeScalaId = this.Value.Id;
-        }
+        grade.GradeScalaId = this.Value.Id;
     }
 }

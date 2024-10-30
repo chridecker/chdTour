@@ -1,0 +1,57 @@
+﻿.entity-table {
+}
+
+    .entity-table .entity-content {
+        padding-left: 0.2rem;
+    }
+
+    .entity-table .search.hide {
+        display: none;
+    }
+
+    .entity-table .search .result {
+        padding: 0.2rem;
+    }
+
+        .entity-table .search .result ::deep .ultra-grid-buttons {
+        }
+
+            .entity-table .search .result ::deep .ultra-grid-buttons button {
+                padding: 0.3rem;
+                transition: none;
+            }
+
+                .entity-table .search .result ::deep .ultra-grid-buttons button svg {
+                    height: 1rem;
+                }
+
+        .entity-table .search .result ::deep .active-groupings {
+        }
+
+            .entity-table .search .result ::deep .active-groupings .chd-alert {
+                padding: 0;
+            }
+
+                .entity-table .search .result ::deep .active-groupings .chd-alert svg[fontawesome-icon=layer-group] {
+                    fill: var(--chd-font-color);
+                }
+
+        .entity-table .search .result ::deep .ultra-grid {
+        }
+
+            .entity-table .search .result ::deep .ultra-grid .ultra-grid-row {
+            }
+
+                .entity-table .search .result ::deep .ultra-grid .ultra-grid-row .ultra-grid-field {
+                }
+
+                    .entity-table .search .result ::deep .ultra-grid .ultra-grid-row .ultra-grid-field.ultra-grid-action-buttons {
+                    }
+
+                        .entity-table .search .result ::deep .ultra-grid .ultra-grid-row .ultra-grid-field.ultra-grid-action-buttons button {
+                            transition: none;
+                        }
+
+                            .entity-table .search .result ::deep .ultra-grid .ultra-grid-row .ultra-grid-field.ultra-grid-action-buttons button svg {
+                                height: 1rem;
+                            }

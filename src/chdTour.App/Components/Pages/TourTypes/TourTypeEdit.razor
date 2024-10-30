@@ -1,13 +1,11 @@
 @using Microsoft.EntityFrameworkCore
-@using chdTour.App.Components.Base
-@using chdTour.App.Components.Inputs
 @using chdTour.DataAccess.Contracts.Domain
 @inject IGradeScalaRepository scalaRepo
-@inherits BaseEditForm<ITourTypeRepository,TourType>
+@inherits BaseEditForm<ITourTypeRepository,TourType,Guid>
 
-<EditFormLayout TRepo="ITourTypeRepository" T="TourType" @ref="this._layout" Value="this.Value" OnBack="this.OnBack">
-    <EditFormText TRepo="ITourTypeRepository" T="TourType" Value="this.Value" Property="x => x.Title" Title="Titel" />
-    <EditFormSearch TRepo="ITourTypeRepository" T="TourType" TValue="GradeScala" TFavoriteObject="Guid"
+<EditFormLayout TRepo="ITourTypeRepository" T="TourType" PK="Guid" @ref="this._layout" Value="this.Value" OnBack="this.OnBack">
+    <EditFormText TRepo="ITourTypeRepository" T="TourType" PK="Guid" Value="this.Value" Property="x => x.Title" Title="Titel" />
+    <EditFormSearch TRepo="ITourTypeRepository" T="TourType" PK="Guid" TValue="GradeScala" TFavoriteObject="Guid"
                     Name="x => x?.Title" Property="x => x.GradeScala" Title="Skala" Value="this.Value" Values="this._scalaLst"
                     OnChange="this.Changed" />
 </EditFormLayout>

@@ -1,0 +1,22 @@
+@using chd.UI.Base.Components.General.UltraGrid
+@using chd.UI.Base.Contracts.Interfaces.Data
+@using chdTour.DataAccess.Repositories.Base
+@typeparam TRepo where TRepo : class, IBaseRepository<T, PK>
+@typeparam T where T : class, IBaseEntity<PK>
+@typeparam PK where PK : struct
+
+<div class="entity-table">
+    @if (this._isItemVisible)
+    {
+        <div class="entity-content">
+            @ChildContent
+        </div>
+    }
+    <div class="search @(this._isItemVisible  ? " hide " :"")">
+        <div class="result">
+            <DataGridTable T="T" PK="PK" IsGroupable="this.IsGroupable" Items="this.Items"
+                           OnEdit="this.OnEdit" Reload="async ()=>await this.OnReload.InvokeAsync()" Columns="this.Columns" />
+        </div>
+        <FloatingActionNavigation FAIcon="plus" OnClick="this.CreateEntity" />
+    </div>
+</div>

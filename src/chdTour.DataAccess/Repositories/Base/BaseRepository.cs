@@ -1,4 +1,4 @@
-﻿using chdTour.DataAccess.Contracts.Interfaces.Repositories.Base;
+﻿using chd.UI.Base.Contracts.Interfaces.Data;
 using chdTour.Persistence.EF;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -10,7 +10,8 @@ using System.Threading.Tasks;
 
 namespace chdTour.DataAccess.Repositories.Base
 {
-    public class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : class
+    public class BaseRepository<TEntity> : IBaseRepository<TEntity,Guid> 
+        where TEntity : class, IBaseEntity<Guid>
     {
         protected readonly chdTourContext _chdTourContext;
 

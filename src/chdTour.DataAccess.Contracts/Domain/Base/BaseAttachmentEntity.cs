@@ -1,10 +1,12 @@
-﻿using System;
+﻿using chd.UI.Base.Contracts.Interfaces.Data;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace chdTour.DataAccess.Contracts.Domain.Base
 {
-    public class BaseAttachmentEntity<T> : BaseEntity<T> where T : struct
+    public class BaseAttachmentEntity<PK> : BaseEntity<PK>, IBaseAttachmentEntity<PK>
+        where PK : struct
     {
         public byte[] Data { get; set; }
         public string Type { get; set; }

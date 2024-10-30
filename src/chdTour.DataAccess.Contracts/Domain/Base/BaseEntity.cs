@@ -1,4 +1,4 @@
-﻿using chdTour.DataAccess.Contracts.Interfaces.Domain;
+﻿using chd.UI.Base.Contracts.Interfaces.Data;
 using System;
 using System.Collections.Generic;
 using System.Text;

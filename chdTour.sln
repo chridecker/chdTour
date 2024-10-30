@@ -19,7 +19,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "chdTour.DataAccess", "src\c
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "chdTour.App", "src\chdTour.App\chdTour.App.csproj", "{8F1FFFDB-EC08-4343-8C7A-EC696F334106}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "chdTour.Console", "src\chdTour.Console\chdTour.Console.csproj", "{4012CBF4-3FB8-4577-B551-DE976E215630}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "chdTour.Console", "src\chdTour.Console\chdTour.Console.csproj", "{4012CBF4-3FB8-4577-B551-DE976E215630}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
